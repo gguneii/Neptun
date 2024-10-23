@@ -6,3 +6,8 @@
     transition: all .4s cubic-bezier(.18, .89, .32, 1.28);
     translate: (90deg);
 } 
+#lists{
+    border: 1px solid rgba(0,0,0, .15);
+    background-clip: padding-box;
+    box-shadow: 0 0 25px rgba(0, 0, 0, .15);
+}

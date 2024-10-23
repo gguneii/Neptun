@@ -1,20 +1,36 @@
 import '@fontsource/noto-sans'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faChevronDown, faHeart as faRegularHeart, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faChevronDown, faHeart as faRegularHeart, faBars, faSortDown } from '@fortawesome/free-solid-svg-icons';
 function HeaderBtns() {
   return (
     <>
         <div className="header-bottom bg-[#ff8300]">
                 <div className="container lgx:max-w-[1100px] mx-auto px-[15px]">
                     <div className="header-bottom-inner flex items-center justify-between md:relative text-white">
-                        
+                        <div className="header-bottom-left">
+                        <FontAwesomeIcon icon={faBars} />              
+                        </div>
                         <div className=''>
                         <ul className='hidden lgx:flex pt-[3px] pl-[18px] w-full'>                                                 
-                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Ana səhifə</a></li>
-                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto' href="">Haqqımızda</a></li>
-                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto' href="">Aksiyalar</a></li>
-                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Supermarketlər</a></li>
-                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Karyera</a></li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto' href="">Ana səhifə</a></li>
+                                <li className='relative group'><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto' href="">Haqqımızda
+                                <FontAwesomeIcon className='px-2' icon={faSortDown} />
+                                </a>
+                                <ul id='lists' className='absolute left-0 min-w-[144px] mt-[10px] border max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]'>
+                                    <li><a href="">Siyasətimiz</a></li>
+                                    <li><a href="">Yeniliklər</a></li>
+                                </ul>
+                                </li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto' href="">Aksiyalar
+                                <FontAwesomeIcon className='px-2' icon={faSortDown} />
+                                </a>
+                                </li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Supermarketlər
+                                <FontAwesomeIcon className='px-2' icon={faSortDown} />
+                                </a></li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Karyera
+                                <FontAwesomeIcon className='px-2' icon={faSortDown} />
+                                </a></li>
                                 <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Əlaqə</a></li>
                                 </ul>
                         </div>
