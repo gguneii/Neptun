@@ -1,27 +1,38 @@
+import '@fontsource/noto-sans'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faChevronDown,faHeart as faRegularHeart } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faChevronDown, faHeart as faRegularHeart, faBars } from '@fortawesome/free-solid-svg-icons';
 function HeaderBtns() {
   return (
     <>
-    <div className="header-center bg-white h-[10vh]">
-
-    </div>
-        <div className="header-bottom  bg-[#ff8300]">
-                <div className="container mx-auto px-[15px]">
-                    <div className="header-bottom-inner">
-                        <div className="header-bottom-left"></div>
-                        <div className="header-bottom-right flex items-center">
-                                <div className="header-top-btns justify-center flex items-center">
+        <div className="header-bottom bg-[#ff8300]">
+                <div className="container lgx:max-w-[1100px] mx-auto px-[15px]">
+                    <div className="header-bottom-inner flex items-center justify-between md:relative text-white">
+                        <div className="header-bottom-left">
+                        <FontAwesomeIcon icon={faBars} />              
+                        </div>
+                        <div className=''>
+                        <ul className='hidden lgx:flex pt-[3px] pl-[18px] w-full'>                                                 
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Ana səhifə</a></li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto' href="">Haqqımızda</a></li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto' href="">Aksiyalar</a></li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Supermarketlər</a></li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Karyera</a></li>
+                                <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Əlaqə</a></li>
+                                </ul>
+                        </div>
+                        <div className="header-bottom-right justify-center flex items-center">
+                                <div className="header-top-btns justify-center flex items-center mr-[42px] md:mr-0">
                                     <div className="header-top-left flex  items-center">
                                         <div className="tabBlock flex">
-                                            <ul className="items-center leading-[44px] flex ">
+                                            <ul className="items-center leading-[44px] flex">
                                                 <li><a className='text-[12px] px-[8px] text-white' href="">
                                                 <FontAwesomeIcon icon={faLock} className='px-1' /> Giriş   
                                                 </a></li>
                                                 <li className='relative group border-[#ddd]'><a className='text-[12px] px-[8px] text-white border-l ' href="">
+                                                <a href="" className='px-2 hidden md:inline-block'>Hesabım</a>
                                                 <FontAwesomeIcon icon={faChevronDown} /> 
-                                                </a>
-                                                <ul className='dropdown-menu text-[12px] absolute top-[29px] group-hover:opacity-100 opacity-0 transition-opacity duration-300 mt-[20px] min-w-[144px] p-0 border border-[#00000026] left-0 right-0 bg-clip-padding bg-white'>
+                                                </a> 
+                                                <ul className='dropdown-menu text-[12px] absolute top-[29px] group-hover:opacity-100 opacity-0 transition-opacity duration-300 mt-[10px] min-w-[144px] p-0 border border-[#00000026] left-0 right-0 bg-clip-padding bg-white'>
                                                     <li><a className='px-[15px] py-[5px] text-[#555] block leading-[1.42857143] hover:text-[#ff8300] hover:bg-[#f7f7f7]' href="">Hesabım</a></li>
                                                     <li><a className='px-[15px] py-[5px] text-[#555] block leading-[1.42857143] hover:text-[#ff8300] hover:bg-[#f7f7f7]' href="">Sifariş tarixçəsi</a></li>
                                                     <li><a className='px-[15px] py-[5px] text-[#555] block leading-[1.42857143] hover:text-[#ff8300] hover:bg-[#f7f7f7]' href="">Əməliyyatlar</a></li>
@@ -69,8 +80,10 @@ function HeaderBtns() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="dropdown-menu">                  
-                                </div>
+                                
+                        </div>
+                        <div className="dropdown-menu md:absolute md:right-0 md:top-[-74px] mdl:opacity-0">  
+                                <FontAwesomeIcon className=' bg-white  text-[#ff8300] md:bg-[#ff8300] md:text-white  text-[25px] px-3 py-1 rounded-md' icon={faBars} />              
                         </div>
                     </div>
                 </div>
