@@ -7,9 +7,7 @@ function HeaderBtns() {
         <div className="header-bottom bg-[#ff8300]">
                 <div className="container lgx:max-w-[1100px] mx-auto px-[15px]">
                     <div className="header-bottom-inner flex items-center justify-between md:relative text-white">
-                        <div className="header-bottom-left">
-                        <FontAwesomeIcon icon={faBars} />              
-                        </div>
+                        
                         <div className=''>
                         <ul className='hidden lgx:flex pt-[3px] pl-[18px] w-full'>                                                 
                                 <li><a className='font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto ' href="">Ana səhifə</a></li>
