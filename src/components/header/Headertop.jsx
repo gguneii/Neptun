@@ -1,6 +1,6 @@
 function Headertop() {
   return (
-    <div className="flex custom:gap-6 justify-center items-center w-[96%] lg:w-11/12 xlg:max-w-[1100px] mx-auto">
+    <div className="flex custom:gap-6 justify-center items-center w-[96%] lg:w-11/12 lgx:max-w-[1100px] mx-auto">
         <div className="h-[70px] custom:h-[100px]">
         <img className="h-[70px] custom:h-[100px] w-[130px] custom:w-[200px] object-cover" src="../src/assets/logo.png" alt="logo image"/>
         </div>
