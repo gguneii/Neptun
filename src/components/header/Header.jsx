@@ -1,6 +1,10 @@
+import Headertop from "./Headertop"
+
 function Header() {
   return (
-    <div>Header</div>
+    <header>
+      <Headertop />
+    </header>
   )
 }
 
