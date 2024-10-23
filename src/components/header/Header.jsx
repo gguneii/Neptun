@@ -1,6 +1,12 @@
+import HeaderBtns from "./HeaderBtns"
+
 function Header() {
   return (
-    <div>Header</div>
+    <>
+    <header>
+      <HeaderBtns />
+    </header>
+    </>
   )
 }
 
