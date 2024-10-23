@@ -1,11 +1,11 @@
+import Headertop from "./Headertop"
 import HeaderBtns from "./HeaderBtns"
 
 function Header() {
   return (
     <>
-    <header>
+      <Headertop />
       <HeaderBtns />
-    </header>
     </>
   )
 }
