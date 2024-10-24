@@ -2,12 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.svg-cubic{
-    transition: all .4s cubic-bezier(.18, .89, .32, 1.28);
-    translate: (90deg);
-} 
-#lists{
+
+.lists{
     border: 1px solid rgba(0,0,0, .15);
     background-clip: padding-box;
-    box-shadow: 0 0 25px rgba(0, 0, 0, .15);
+    -webkit-box-shadow: 0 3px 4px rgba(0, 0, 0, .35);
+    -webkit-box-sizing: content-box;
+    border-top: 2px solid #ef7b00;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }

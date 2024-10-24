@@ -1,19 +1,18 @@
+import { FaSearch } from "react-icons/fa";
 function Headertop() {
   return (
-    <div className="flex custom:gap-6 justify-center items-center w-[96%] lg:w-11/12 mx-auto">
+    <div className="flex custom:gap-6 justify-center items-center w-[96%] lg:w-11/12 lgx:max-w-[1100px] mx-auto">
         <div className="h-[70px] custom:h-[100px]">
         <img className="h-[70px] custom:h-[100px] w-[130px] custom:w-[200px] object-cover" src="../src/assets/logo.png" alt="logo image"/>
         </div>
         <div className="lg:flex lg:items-center lg:justify-between flex-1">
             <form className="lg:w-1/2">   
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-[#ff8230]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
+                <div className="relative">
+                    <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <FaSearch className="w-4 h-4 text-[#ff8230]"/>
                     </div>
-                    <input type="search" id="search" class="block min-w-[180px] w-full p-1 ps-10 text-[.85rem] text-gray-900 border border-[#ff8230] rounded-full bg-white custom:p-3 custom:min-w-[300px] custom:ps-10" placeholder="Məhsulu atarın" required />
-                    <button type="submit" class="text-white absolute end-0 bottom-[0.45px] bg-[#ff8230] hover:bg-[#dd7128]  font-medium rounded-full text-[0.85rem] px-4 py-1 custom:py-3 custom:px-6">Axtar</button>
+                    <input type="search" id="search" className="block min-w-[180px] w-full p-1 ps-10 text-[.85rem] text-gray-900 border border-[#ff8230] rounded-full bg-white custom:p-3 custom:min-w-[300px] custom:ps-10" placeholder="Məhsulu atarın" required />
+                    <button type="submit" className="text-white absolute end-0 bottom-[0.05rem] bg-[#ff8230] hover:bg-[#dd7128]  font-medium rounded-full text-[0.85rem] px-4 py-1 custom:py-3 custom:px-6">Axtar</button>
                 </div>
             </form>
             <div className="hidden lg:flex gap-4">
