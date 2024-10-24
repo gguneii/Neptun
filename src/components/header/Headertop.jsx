@@ -1,11 +1,11 @@
 import { FaSearch } from "react-icons/fa";
 function Headertop() {
   return (
-    <div className="flex custom:gap-6 justify-center items-center w-[96%] lg:w-11/12 lgx:max-w-[1100px] mx-auto">
+    <div className="flex custom:gap-6 justify-evenly items-center w-[96%] lg:w-11/12 lgx:max-w-[1100px] mx-auto">
         <div className="h-[70px] custom:h-[100px]">
         <img className="h-[70px] custom:h-[100px] w-[130px] custom:w-[200px] object-cover" src="../src/assets/logo.png" alt="logo image"/>
         </div>
-        <div className="lg:flex lg:items-center lg:justify-between flex-1">
+        <div className="lg:flex lg:items-center lg:justify-between lg:flex-1">
             <form className="lg:w-1/2">   
                 <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

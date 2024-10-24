@@ -26,7 +26,7 @@ function Sidebar() {
                     <span className="uppercase text-[.8rem] text-[#000] lg:text-[.65rem] lg:capitalize lg:font-bold pl-3 flex items-center">Meyvə, tərəvəz, quru Meyvə <RiArrowDropRightLine className="hidden lg:block text-xl ml-3 text-gray-500"/> </span>
                 </a>
                 <div>
-                    <ul className="border-x-2 uppercase lg:capitalize text-[.8rem] border-l-[#fdae4b] my-4 px-2 lg:absolute lg:top-0 lg:left-[230px] lg:my-0 lg:bg-white lg:min-w-[200px] lg:text-[.7rem] shadow-md">
+                    <ul className="border-x-2 uppercase lg:capitalize text-[.8rem] border-l-[#fdae4b] my-4 px-2 lg:absolute lg:top-0 lg:left-[230px] lg:my-0 lg:bg-white lg:min-w-[200px] lg:text-[.7rem] lg:shadow-md">
                         <li className="py-2 pl-2 hover:text-[#ff8300] hover:underline"><a href="#">Meyvə</a></li>
                         <li className="py-2 pl-2 hover:text-[#ff8300] hover:underline"><a href="#">Tərəvəz</a></li>
                         <li className="py-2 pl-2 hover:text-[#ff8300] hover:underline"><a href="#">Goyerti</a></li>
