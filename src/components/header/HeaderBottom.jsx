@@ -29,7 +29,7 @@ function HeaderBottom() {
                     Ana səhifə
                   </a>
                 </li>
-                <li className="relative z-9999 group">
+                <li className="relative group">
                   <a
                     className="font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto hover:text-[#eee]"
                     href=""
@@ -37,7 +37,7 @@ function HeaderBottom() {
                     Haqqımızda
                     <FontAwesomeIcon className="px-2" icon={faSortDown} />
                   </a>
-                  <ul className="lists absolute w-full left-0 min-w-[244px] z-[-1] border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]">
+                  <ul className="lists absolute w-full left-0 min-w-[244px] border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] hidden group-hover:block bg-clip-pading z-10 bg-white text-black transition-all duration-500 text-[12px] pt-[5px]">
                     <li className="p-2 cursor-pointer">
                       <a href="">Siyasətimiz</a>
                     </li>
@@ -46,7 +46,7 @@ function HeaderBottom() {
                     </li>
                   </ul>
                 </li>
-                <li className="relative group z-9999">
+                <li className="relative group">
                   <a
                     className="font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto hover:text-[#eee]"
                     href=""
@@ -54,7 +54,7 @@ function HeaderBottom() {
                     Aksiyalar
                     <FontAwesomeIcon className="px-2" icon={faSortDown} />
                   </a>
-                  <ul className="lists absolute w-full left-0 min-w-[244px] z-[-1] border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]">
+                  <ul className="lists absolute w-full left-0 min-w-[244px] z-10 border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]">
                     <li className="p-2 cursor-pointer">
                       <a href="">Kampaniyalar</a>
                     </li>
@@ -66,7 +66,7 @@ function HeaderBottom() {
                     </li>
                   </ul>
                 </li>
-                <li className="relative group z-9999">
+                <li className="relative group">
                   <a
                     className="font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto hover:text-[#eee]"
                     href=""
@@ -74,7 +74,7 @@ function HeaderBottom() {
                     Supermarketlər
                     <FontAwesomeIcon className="px-2" icon={faSortDown} />
                   </a>
-                  <ul className="lists absolute w-full left-0 min-w-[244px] z-[-1] border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]">
+                  <ul className="lists absolute w-full left-0 min-w-[244px] z-10 border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]">
                     <li className="p-2 cursor-pointer">
                       <a href="">Mağazalarımız</a>
                     </li>
@@ -95,7 +95,7 @@ function HeaderBottom() {
                     </li>
                   </ul>
                 </li>
-                <li className="relative group z-9999">
+                <li className="relative group">
                   <a
                     className="font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto hover:text-[#eee]"
                     href=""
@@ -103,7 +103,7 @@ function HeaderBottom() {
                     Karyera
                     <FontAwesomeIcon className="px-2" icon={faSortDown} />
                   </a>
-                  <ul className="lists absolute w-full left-0 min-w-[244px] z-[-1] border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]">
+                  <ul className="lists absolute w-full left-0 min-w-[244px] z-10 border rounded-lg max-h-0 overflow-hidden group-hover:max-h-[300px] opacity-0 group-hover:opacity-100 bg-white text-black transition-all duration-500 ease-out text-[12px] pt-[5px]">
                     <li className="p-2 cursor-pointer">
                       <a href="">İşə qəbul Proseduru</a>
                     </li>
