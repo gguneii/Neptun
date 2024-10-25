@@ -1,6 +1,16 @@
+import BestSellers from "./BestSellers"
+import SelectedProducts from "./SelectedProducts"
+import SpecialOffers from "./SpecialOffers"
+
 function Main() {
   return (
-    <div></div>
+    <main>
+        <div></div>
+        <SelectedProducts />
+        <SpecialOffers />
+        <BestSellers />
+        <div></div>
+    </main>
   )
 }
 
