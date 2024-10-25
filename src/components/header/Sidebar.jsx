@@ -5,7 +5,7 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 
 function Sidebar() {
     return (
-        <div className="absolute top-[115px] left-0 text-black z-[999] custom:top-[146px] lg:top-[-6px] lg:pt-0  bg-white min-h-full w-full custom:w-[70%] md:w-[40%] md:pt-4 lg:w-[230px] lg:rounded-md lg:shadow-2xl  lg:border-t-[6px] lg:border-[#ff8300]">
+        <div className="hidden lg:block absolute top-[115px] left-0 text-black z-[999] custom:top-[146px] lg:top-[-6px] lg:pt-0  bg-white min-h-full w-full custom:w-[70%] md:w-[40%] md:pt-4 lg:w-[230px] lg:rounded-md lg:shadow-2xl  lg:border-t-[6px] lg:border-[#ff8300]">
             <div className="hidden sm:flex justify-end pt-2 pr-4 w-full lg:hidden">
                 <IoCloseSharp />
             </div>
