@@ -6,7 +6,6 @@ function Header() {
     <>
       <Headertop />
       <HeaderBottom />
-      <Sidebar />
     </>
   )
 }

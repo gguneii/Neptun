@@ -7,17 +7,20 @@ import {
   faBars,
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
+import Sidebar from "./Sidebar";
+
 function HeaderBottom() {
   return (
     <>
-      <div className="header-bottom bg-[#ff8300]">
-        <div className="container lgx:max-w-[1100px] mx-auto px-[15px]">
-          <div className="header-bottom-inner flex items-center justify-between md:relative text-white">
-            <div className="header-bottom-left cursor-pointer lg:hidden">
+        <div className="header-bottom bg-[#ff8300]">
+        <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
+          <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
+            <Sidebar />
+            <div className="header-bottom-left lg:hidden">
               <FontAwesomeIcon icon={faBars} />
             </div>
             <div className="">
-              <ul className="hidden lgx:flex ml-[185px] pt-[3px] pl-[18px]  w-full">
+              <ul className="hidden lgx:flex lgx:justify-end w-[800px] pt-[3px] pl-[18px]">
                 <li>
                   <a
                     className="font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto hover:text-[#eee]"
