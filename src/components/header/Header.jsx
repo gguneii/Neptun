@@ -1,12 +1,12 @@
 import Headertop from "./Headertop"
-import HeaderBtns from "./HeaderBtns"
+import HeaderBottom from "./HeaderBottom"
 import Sidebar from "./Sidebar"
 
 function Header() {
   return (
     <>
       <Headertop />
-      <HeaderBtns />
+      <HeaderBottom />
       <Sidebar />
     </>
   )
