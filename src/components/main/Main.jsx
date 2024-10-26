@@ -63,7 +63,7 @@ function Main() {
 
         </Swiper>
 
-        <div className="max-w-[800px] mx-auto medias flex justify-around mdl:mr-[10px] lgx:max-w-[940px] lgx:justify-between mt-3 lgx:mr-[30px] 2xl:mr-[160px] ">
+        <div className="max-w-[800px] mx-auto medias flex justify-around mdl:mr-[10px] lgx:max-w-[940px] lgx:justify-between mt-3 lgx:mr-[30px] 2xl:mr-[160px] pb-[40px]">
             <div className="media w-full">
               <img className="w-full object-cover" src="./src/assets/media1.png" alt="" />
               <div className="flex justify-between items-center bg-white">

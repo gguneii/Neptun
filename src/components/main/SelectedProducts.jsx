@@ -1,12 +1,21 @@
 import { FaSearch } from "react-icons/fa";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, Autoplay, EffectFade } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+
 function SelectedProducts() {
 
   return (
-    <div className="bg-gray-100 h-full">
+    <div className="bg-gray-100 h-full pt-[40px]">
       <div className="w-[90%] mx-auto py-4">
         <div className=" flex justify-end py-3">
           <p className="text-[#ff8230] cursor-pointer">Hamsına bax</p>
         </div>
+      <div className="md:flex md:flex-col lg:flex-row">
         <div className="relative custom-select custom:hidden">
           <select className="w-full outline-none border-[1px] text-black border-gray-300 py-1 px-2 text-[12px] uppercase">
             <option value="neptun" className="text-black">Yalnız Neptunda</option>
@@ -16,13 +25,74 @@ function SelectedProducts() {
             <option value="nescafe" className="text-black">Nescake</option>
           </select>
         </div>
-        <ul className="hidden custom:flex lg:hidden justify-center p-3 uppercase gap-6 text-[.8rem]">
+        <ul className="hidden custom:flex md:hidden justify-center p-3 uppercase gap-6 text-[.8rem]">
           <li><a href="#">Yalnız Neptunda</a></li>
           <li><a href="#">Meyve</a></li>
           <li><a href="#">Quru Meyveler</a></li>
           <li><a href="#">Seher Yemekleri</a></li>
           <li><a href="#">Nescake</a></li>
         </ul>
+        <div className="hidden md:block">
+          <Swiper
+            className="w-full h-[400px]  lg:h-full mx-auto lg:w-[400px] mb-6 lg:mr-2 lg:mb-0"
+            style={{
+              "--swiper-navigation-color": "#ff8300",
+              "--swiper-navigation-size": "12px",
+            }}
+            modules={[Navigation, Pagination, Scrollbar, Autoplay]}
+            breakpoints={{
+              640: {    
+                slidesPerView: 2,
+              },
+              1024: {     
+                slidesPerView: 1,
+              }
+            }}
+            spaceBetween={10} 
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            speed={1000}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }}
+            pagination={{ clickable: true }}
+            onSlideChange={() => console.log("swiper changed")}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            <SwiperSlide className="relative">
+              <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./src/assets/meyv.png" alt="meyv" />
+              <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
+                Kategoriyalar: <span className="block">Meyve</span>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./src/assets/seher.jpg" alt="seher" />
+              <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
+                Kategoriyalar: <span className="block">Meyve</span>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./src/assets/siyniyyat.jpg" alt="siyniyyat" />
+              <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
+                Kategoriyalar: <span className="block">Meyve</span>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+            <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./src/assets/yalniz.jpg" alt="yalniz" />
+              <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
+                Kategoriyalar: <span className="block">Meyve</span>
+              </div>
+            </SwiperSlide>
+
+            <div className="swiper-button-prev swiper-button" />
+            <div className="swiper-button-next swiper-button" />
+          </Swiper>
+        </div>
+
         <div className="flex gap-2 justify-center">
           <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-full md:w-auto">
             <div className="flex w-[80%] mt-4 justify-end">
@@ -92,6 +162,7 @@ function SelectedProducts() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }
