@@ -283,7 +283,7 @@ function HeaderBottom() {
         </div>
       </div>
 
-      <div className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${sidebar ? "left-0" :"left-[-100%]"}`}>
+      <div className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${sidebar ? "translate-x-0" :"-translate-x-full"}`}>
         <div className="p-[20px] text-black">
           <span onClick={handleSidebar} className={`block cursor-pointer pb-[10px] font-bold text-right ${sidebar ? "" : "hidden"}`}>
             X
