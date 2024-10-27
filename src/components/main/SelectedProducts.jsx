@@ -1,6 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, Autoplay, EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -11,12 +11,12 @@ function SelectedProducts() {
 
   return (
     <div className="bg-gray-100 h-full pt-[40px]">
-      <div className="max-w-[1200px] mx-auto py-4 ">
+      <div className="max-w-[1200px] w-[95%] mx-auto py-4 ">
         <div className=" flex justify-end py-3 ">
           <p className="text-[#ff8230] cursor-pointer">Hamsına bax</p>
         </div>
-        <div className="md:flex md:flex-col lg:flex-row">
-          <div className="relative w-[95%] mx-auto custom-select custom:hidden">
+        <div className="md:flex md:flex-col lgx:flex-row">
+          <div className="relative custom-select custom:hidden">
             <select className="w-full outline-none border-[1px] text-black border-gray-300 py-1 px-2 text-[12px] uppercase">
               <option value="neptun" className="text-black">Yalnız Neptunda</option>
               <option value="fruit" className="text-black">Meyve</option>
@@ -34,7 +34,7 @@ function SelectedProducts() {
           </ul>
           <div className="hidden md:block">
             <Swiper
-              className="w-full h-[400px]  mx-auto lg:w-[400px] mb-6 lg:mr-2 lg:mb-0"
+              className="w-full h-[400px]  mx-auto lgx:w-[400px] mb-6 lgx:mr-2 lgx:mb-0"
               style={{
                 "--swiper-navigation-color": "#ff8300",
                 "--swiper-navigation-size": "12px",
@@ -45,7 +45,10 @@ function SelectedProducts() {
                   slidesPerView: 2,
                 },
                 1024: {
-                  slidesPerView: 1,
+                  slidesPerView: 3,
+                },
+                1200:{
+                  slidesPerView: 1
                 }
               }}
               spaceBetween={10}
@@ -91,7 +94,7 @@ function SelectedProducts() {
             </Swiper>
           </div>
           <Swiper
-            className=" h-[400px] mb-6 lg:mr-2 lg:mb-0 w-full"
+            className=" h-[400px] mb-6 lgx:mr-2 lgx:mb-0 w-full"
             style={{
               "--swiper-navigation-color": "#ff8300",
               "--swiper-navigation-size": "12px",
@@ -119,7 +122,7 @@ function SelectedProducts() {
           >
             <div className="flex justify-center">
               <SwiperSlide className="relative">
-                <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] lg:w-[250px]">
+                <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] lgx:w-[250px]">
                   <div className="flex w-[80%] mt-4 justify-end">
                     <div className="w-[21.6px] h-[22px]">
                       <svg
@@ -153,8 +156,8 @@ function SelectedProducts() {
                   <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete al</button>
                 </div>
               </SwiperSlide>
-              <SwiperSlide>
-              <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] md:w-[250px]">
+              <SwiperSlide className="relative">
+                <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] lgx:w-[250px]">
                   <div className="flex w-[80%] mt-4 justify-end">
                     <div className="w-[21.6px] h-[22px]">
                       <svg
@@ -188,8 +191,8 @@ function SelectedProducts() {
                   <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete al</button>
                 </div>
               </SwiperSlide>
-              <SwiperSlide>
-              <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] md:w-[250px]">
+              <SwiperSlide className="relative">
+                <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] lgx:w-[250px]">
                   <div className="flex w-[80%] mt-4 justify-end">
                     <div className="w-[21.6px] h-[22px]">
                       <svg
@@ -223,8 +226,8 @@ function SelectedProducts() {
                   <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete al</button>
                 </div>
               </SwiperSlide>
-              <SwiperSlide>
-              <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] md:w-[250px]">
+              <SwiperSlide className="relative">
+                <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center w-[full] lgx:w-[250px]">
                   <div className="flex w-[80%] mt-4 justify-end">
                     <div className="w-[21.6px] h-[22px]">
                       <svg
