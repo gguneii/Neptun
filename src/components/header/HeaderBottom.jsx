@@ -8,11 +8,23 @@ import {
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
+import { useState } from "react";
 
 function HeaderBottom() {
+  const [openIndex, setopenIndex] = useState(null)
+  const [sidebar, setSideBar] = useState(false)
+  function toggleLists(index){
+    setopenIndex((prevIndex)=> (prevIndex === index ? null : index)
+   )
+    // console.log(openIndex);
+  }
+  function handleSidebar(){
+    setSideBar(!sidebar)
+  }
+
   return (
     <>
-        <div className="header-bottom bg-[#ff8300]">
+      <div className="header-bottom bg-[#ff8300]">
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
             <Sidebar />
@@ -261,35 +273,119 @@ function HeaderBottom() {
                 </div>
               </div>
             </div>
-            <div className="dropdown-menu md:right-16 cursor-pointer md:absolute md:top-[30px] mdl:opacity-0">
+            <div onClick={handleSidebar} className="dropdown-menu md:right-16 cursor-pointer md:absolute md:top-[30px] mdl:opacity-0">
               <FontAwesomeIcon
                 className=" bg-white  text-[#ff8300] md:bg-[#ff8300] md:text-white  text-[25px] px-3 py-1 rounded-md"
                 icon={faBars}
               />
             </div>
-            <div className="sidebar hidden bg-white w-[280px] overflow-x-hidden">
-              <div className="p-[20px]  text-black">
-              <span className=" block cursor-pointer pb-[10px] text-right">X</span>
-              <ul>
-                <li className="border-b pb-2"><a href="">Ana səhifə</a></li>
-                <li className="border-b py-1 flex items-center justify-between">
-                <a href="">Haqqımızda</a>
-                <button className="bg-[#ff8300] w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer"><span className="text-center font-bold">+</span></button>
-                </li>
-                <li className="border-b py-1 flex items-center justify-between"><a href="">Aksiyalar</a>
-                <button className="bg-[#ff8300] w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer"><span className="text-center font-bold">+</span></button>
-                </li>
-                <li className="border-b py-1 flex items-center justify-between"><a href="">Supermarketlər</a>
-                <button className="bg-[#ff8300] w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer"><span className="text-center font-bold">+</span></button>
-                </li>
-                <li className="border-b py-1 flex items-center justify-between"><a href="">Karyera</a>
-                <button className="bg-[#ff8300] w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer"><span className="text-center font-bold">+</span></button>
-                </li>
-                <li className="border-b py-2"><a href="">Əlaqə</a></li>
-              </ul>
-              </div>
-            </div>
           </div>
+        </div>
+      </div>
+
+      <div className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${sidebar ? "left-0" :"left-[-100%]"}`}>
+        <div className="p-[20px] text-black">
+          <span onClick={handleSidebar} className={`block cursor-pointer pb-[10px] font-bold text-right ${sidebar ? "" : "hidden"}`}>
+            X
+          </span>
+          <ul>
+            <li className="border-b hover:text-[#ff8300] font-normal text-[13px] font-noto text-[#222]  leading-[29px] pb-2">
+              <a href="#">Ana səhifə</a>
+            </li>
+            <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
+              <div className="flex items-center justify-between">
+                <a className="hover:text-[#ff8300] w-full" href="#">Haqqımızda</a>
+                <button onClick={() =>toggleLists(0)} className={`${
+                    openIndex === 0 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                  <span className="text-center font-bold">{openIndex === 0 ? "-" : "+"}</span>
+                </button>
+              </div>
+              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 0 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">Siyasətimiz</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Yeniliklər</a>
+                </li>
+              </ul>
+            </li>
+            <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
+              <div className="flex items-center justify-between">
+                <a className="hover:text-[#ff8300] w-full" href="#">Aksiyalar</a>
+                <button onClick={() =>toggleLists(1)} className={`${
+                    openIndex === 1 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                  <span className="text-center font-bold">{ openIndex === 1 ? "-" : "+"}</span>
+                </button>
+              </div>
+              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 1 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">Kampaniyalar</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Neptun bonus kart</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Elektron kataloq</a>
+                </li>
+              </ul>
+            </li>
+            <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
+              <div className="flex items-center justify-between">
+                <a className="hover:text-[#ff8300] w-full" href="#">Supermarketlər</a>
+                <button onClick={() =>toggleLists(2)} className={`${
+                    openIndex === 2 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                  <span className="text-center font-bold">{ openIndex === 2 ? "-" : "+"}</span>
+                </button>
+              </div>
+              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 2 ? "min-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">Mağazalarmız</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">İrad və təkliflər</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full pb-[20px]" href="#">Alıcıların nəzərinə</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Partnyorluq</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Tərəfdaşlar</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Supermarketdə reklam</a>
+                </li>
+              </ul>
+            </li>
+            <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
+              <div className="flex items-center justify-between">
+                <a className="hover:text-[#ff8300] w-full" href="#">Karyera</a>
+                <button onClick={() =>toggleLists(3)} className={`${
+                    openIndex === 3 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                  <span className="text-center font-bold">{ openIndex === 3 ? "-" : "+"}</span>
+                </button>
+              </div>
+              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 3 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">İşə Qəbul Proseduru</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Vakansiyalar</a>
+                </li>
+                <li>
+                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">CV yerləşdirin</a>
+                </li>
+              </ul>
+            </li>
+            <li className="border-b hover:text-[#ff8300] font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-2">
+              <a href="#">Əlaqə</a>
+            </li>
+          </ul>
         </div>
       </div>
     </>

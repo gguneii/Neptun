@@ -28,7 +28,6 @@ function Main() {
             delay: 3000, 
             disableOnInteraction: false,
           }}
-          loop={true}
           speed={1000}
           navigation=
           {{
@@ -36,11 +35,6 @@ function Main() {
             prevEl: '.swiper-button-prev.swiper-button-1',
           }}
           pagination={{ clickable: true,
-            // renderBullet:(index, className) =>{
-            //   return `<span class="${className} w-2 h-2 rounded-full bg-[#fff] hover:bg-[#ff8300 ]transition-all duration-300 ${
-            //     className.includes('swiper-pagination-bullet-active') ? 'bg-[#ff8300] w-6 rounded-lg' : ''
-            //   }"></span>`;
-            // },
            }}
           onSlideChange={() => "swiper changed"}
           onSwiper={(swiper) => swiper}
