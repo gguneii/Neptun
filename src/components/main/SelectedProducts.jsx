@@ -60,8 +60,6 @@ function SelectedProducts() {
                 prevEl: '.swiper-button-prev.swiper-button-2',
               }}
               pagination={{ clickable: true }}
-              onSlideChange={() => console.log("swiper changed")}
-              onSwiper={(swiper) => console.log(swiper)}
             >
               <SwiperSlide className="relative">
                 <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./src/assets/meyv.png" alt="meyv" />
@@ -107,7 +105,7 @@ function SelectedProducts() {
                 slidesPerView: 3,
               }
             }}
-            spaceBetween={10}
+            spaceBetween={18}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
@@ -118,8 +116,6 @@ function SelectedProducts() {
               nextEl: '.swiper-button-next.swiper-button-2',
               prevEl: '.swiper-button-prev.swiper-button-2',
             }}
-            onSlideChange={() => console.log("swiper changed")}
-            onSwiper={(swiper) => console.log(swiper)}
           >
             <div className="flex justify-center">
               <SwiperSlide className="relative">
