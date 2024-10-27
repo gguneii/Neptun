@@ -2,7 +2,7 @@ import { FaSearch } from "react-icons/fa";
 function BestSellers() {
   return (
     <div className="bg-gray-100 h-full">
-      <div className="w-[90%] mx-auto py-4">
+      <div className="max-w-[1200px] mx-auto py-4">
         <div className="flex items-center justify-between py-4">
           <h3 className="font-semibold">Ən çox satılanlar</h3>
           <div>

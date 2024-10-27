@@ -15,7 +15,7 @@ function Main() {
   return (
     <main className="bg-[#f2f2f2]">
         <div className="" >
-        <Swiper className="max-w-[800px] mx-auto mdl:mr-[10px] lgx:max-w-[980px] lgx:mt-[10px] lgx:mr-[10px] 2xl:mr-[140px] mt-[5px] px-1 md:px-[20px]"
+        <Swiper className="max-w-[800px] mx-auto mdl:mr-[10px] lgx:max-w-[980px] lgx:pt-[10px] lgx:mr-[10px] 2xl:mr-[140px] pt-[5px] px-1 md:px-[20px]"
         style={{
           "--swiper-navigation-color": "#ff8300",
           "--swiper-navigation-size": "12px",
@@ -32,8 +32,8 @@ function Main() {
           speed={1000}
           navigation=
           {{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next.swiper-button-1',
+            prevEl: '.swiper-button-prev.swiper-button-1',
           }}
           pagination={{ clickable: true,
             // renderBullet:(index, className) =>{
@@ -58,8 +58,8 @@ function Main() {
           <img className="w-full object-cover" src="./src/assets/swiper4.webp" alt="" />
           </SwiperSlide>
 
-          <div className="swiper-button-prev swiper-button" />
-          <div className="swiper-button-next swiper-button" />
+          <div className="swiper-button-prev swiper-button-1" />
+          <div className="swiper-button-next swiper-button-1" />
 
         </Swiper>
 

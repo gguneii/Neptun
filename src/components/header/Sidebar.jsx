@@ -5,7 +5,7 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 
 function Sidebar() {
     return (
-        <div className="hidden lg:block absolute top-[115px] left-0 text-black z-[999] custom:top-[146px] lg:top-[-6px] lg:pt-0  bg-white min-h-full w-full custom:w-[70%] md:w-[40%] md:pt-4 lg:w-[230px] lg:rounded-md lg:shadow-2xl  lg:border-t-[6px] lg:border-[#ff8300]">
+        <div className="hidden lg:block absolute top-[115px] left-0 text-black z-[999] custom:top-[146px] lg:top-[-6px] lg:pt-0  bg-white min-h-full w-full custom:w-[70%] md:w-[40%] md:pt-4 lg:w-[230px] lg:rounded-md lg:border-t-[6px] lg:border-[#ff8300]">
             <div className="hidden sm:flex justify-end pt-2 pr-4 w-full lg:hidden">
                 <IoCloseSharp />
             </div>
@@ -54,7 +54,7 @@ function Sidebar() {
                     <span className="uppercase text-[.8rem] text-[#000] lg:text-[.65rem] lg:capitalize lg:font-bold pl-3 flex items-center">Meyvə, tərəvəz, quru Meyvə <RiArrowDropRightLine className="hidden lg:block text-xl ml-3 text-gray-500"/> </span>
                 </a>
                 <div>
-                    <ul className="hidden h-0 group-hover:block group-hover:h-full lg:group-hover:transition-all lg:group-hover:duration-400 lg:ease-in-out lg:group-hover:h-auto lg:group-hover:my-0 group-hover:my-4 border-x-2 uppercase lg:capitalize text-[.8rem] border-l-[#fdae4b] px-2 lg:absolute lg:top-0 lg:left-[230px] lg:my-0 lg:bg-white lg:min-w-[200px] lg:text-[.7rem] lg:shadow-md">
+                    <ul className="hidden h-0 group-hover:block group-hover:h-full lg:group-hover:transition-all lg:group-hover:duration-400 lg:ease-in-out lg:group-hover:h-auto lg:group-hover:my-0 group-hover:my-4 border-x-2 uppercase lg:capitalize text-[.8rem] border-l-[#fdae4b] px-2 lg:absolute lg:top-0 lg:left-[230px] lg:my-0 lg:bg-white lg:min-w-[200px] lg:text-[.7rem]    ">
                         <li className="py-2 pl-2 hover:text-[#ff8300] hover:underline"><a href="#">Meyvə</a></li>
                         <li className="py-2 pl-2 hover:text-[#ff8300] hover:underline"><a href="#">Tərəvəz</a></li>
                         <li className="py-2 pl-2 hover:text-[#ff8300] hover:underline"><a href="#">Goyerti</a></li>
