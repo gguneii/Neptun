@@ -70,25 +70,25 @@ function SelectedProducts() {
               pagination={{ clickable: true }}
             >
               <SwiperSlide className="relative">
-                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./public/assets/meyv.png" alt="meyv" />
+                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="/assets/meyv.png" alt="meyv" />
                 <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
                   Kategoriyalar: <span className="block">Meyve</span>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./public/assets/seher.jpg" alt="seher" />
+                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="/assets/seher.jpg" alt="seher" />
                 <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
                   Kategoriyalar: <span className="block">Meyve</span>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./public/assets/siyniyyat.jpg" alt="siyniyyat" />
+                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="/assets/siyniyyat.jpg" alt="siyniyyat" />
                 <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
                   Kategoriyalar: <span className="block">Meyve</span>
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="./public/assets/yalniz.jpg" alt="yalniz" />
+                <img className="w-full h-full object-cover rounded-r-md  rounded-b-md" src="/assets/yalniz.jpg" alt="yalniz" />
                 <div className="pl-6 pt-3 text-[1.1rem] text-white absolute top-0 left-0 bg-[#0000006a] w-[180px] h-[80px] rounded-br-3xl">
                   Kategoriyalar: <span className="block">Meyve</span>
                 </div>
