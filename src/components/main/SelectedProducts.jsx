@@ -16,7 +16,7 @@ function SelectedProducts() {
       .then(data => setProduct(data.products))
   }, [])
   return (
-    <div className="bg-gray-100 h-full pt-[40px]">
+    <div className="bg-gray-100 h-full md:pt-[40px]">
       <div className="max-w-[1200px] w-[95%] mx-auto py-4 ">
         <div className=" flex justify-end py-3 ">
           <p className="text-[#ff8230] cursor-pointer">Hamsına bax</p>

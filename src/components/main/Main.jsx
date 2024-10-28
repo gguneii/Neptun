@@ -15,7 +15,7 @@ function Main() {
   return (
     <main className="bg-[#f2f2f2]">
         <div className="" >
-        <Swiper className="max-w-[800px] mx-auto mdl:mr-[10px] lgx:max-w-[980px] lgx:pt-[10px] lgx:mr-[10px] 2xl:mr-[140px] pt-[5px] px-1 md:px-[20px]"
+        <Swiper className="max-w-[800px] mx-auto mdl:mr-[10px] lgx:max-w-[980px] lgx:pt-[10px] lgx:mr-[10px] 2xl:mr-[140px] pt-[10px] px-1 md:px-[20px]"
         style={{
           "--swiper-navigation-color": "#ff8300",
           "--swiper-navigation-size": "12px",
@@ -57,7 +57,7 @@ function Main() {
 
         </Swiper>
 
-        <div className="max-w-[800px] mx-auto medias flex justify-around mdl:mr-[10px] lgx:max-w-[940px] lgx:justify-between mt-3 lgx:mr-[30px] 2xl:mr-[160px] pb-[40px]">
+        <div className="max-w-[800px] mx-auto medias flex justify-around mdl:mr-[10px] lgx:max-w-[940px] lgx:justify-between mt-6 lgx:mr-[30px] 2xl:mr-[160px] pb-[40px]">
             <div className="media w-full">
               <img className="w-full object-cover" src="/assets/media1.png" alt="" />
               <div className="flex justify-between items-center bg-white">
@@ -84,7 +84,7 @@ function Main() {
         <SelectedProducts />
         <SpecialOffers />
         <BestSellers />
-        <div className="md:max-w-[1300px] mx-auto max-w-[600px] px-5 py-20">
+        <div className="md:max-w-[1300px] mx-auto max-w-[600px] px-5 pb-10">
            <div className="grid justify-center items-center gap-6 sm:grid-cols-2 md:px-20 lg:grid-cols-4 ">
            <img className="w-full object-cover" src="/assets/freshmaker.png" alt="" />
            <img className="w-full object-cover" src="/assets/payman.png" alt="" />
