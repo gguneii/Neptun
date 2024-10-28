@@ -7,8 +7,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import { useEffect, useState } from "react";
 
 function SpecialOffers() {
+  const [discProducts, setDiscProducts] = useState([])
+  useEffect(() =>{
+    fetch("https://neptunbk.vercel.app/products/discounted")
+    .then(res => res.json())
+    .then(prod => setDiscProducts(prod.products)
+    )    
+    // console.log(discProducts);
+
+  },[])
   return (
     <div className="bg-gray-100 h-full">
       <div className="max-w-[1200px] w-[95%] mx-auto py-4">
@@ -41,14 +51,18 @@ function SpecialOffers() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          loop={true}
           speed={1000}
           navigation={{
             nextEl: '.swiper-button-next.swiper-button-2',
             prevEl: '.swiper-button-prev.swiper-button-2',
           }}
         >
-          <SwiperSlide className="relative">
+        <div className="flex justify-center">
+        {
+          discProducts && 
+          discProducts.map((item,i) =>{
+            return (
+              <SwiperSlide key={i} className="relative">
             <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
               <div className="flex w-[80%] mt-4 justify-end">
                 <div className="w-[21.6px] h-[22px]">
@@ -66,16 +80,16 @@ function SpecialOffers() {
                 </div>
               </div>
               <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
+                <img className="object-cover" src={item.img} alt="" />
               </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
+              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">{item.name}</h3>
               <div className="flex items-center gap-2">
                 <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
+                  <h3>-{item.discount}%</h3>
                 </div>
                 <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
+                  <h3 className="text-[1rem] line-through text-gray-500">{item.price} ₼</h3>
+                  <h2 className="text-[1.3rem] font-bold">{item.totalPrice.toFixed(2)} ₼</h2>
                 </div>
               </div>
               <div className="flex justify-between items-center w-[110px]">
@@ -86,272 +100,11 @@ function SpecialOffers() {
               <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
             </div>
           </SwiperSlide>
-          <SwiperSlide className="relative">
-            <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
-              <div className="flex w-[80%] mt-4 justify-end">
-                <div className="w-[21.6px] h-[22px]">
-                  <svg
-                    className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
-                    xmlns="http://www.w3.org/2000svg"
-                    viewBox="-5 0 156.69 110.07">
-                    <defs></defs>
-                    <path
-                      data-name="neptun_heart"
-                      className="cls-1"
-                      d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
-                      transform="translate(-1191.655 -217.465)"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
-              </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
-              <div className="flex items-center gap-2">
-                <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
-                </div>
-                <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
-                </div>
-              </div>
-              <div className="flex justify-between items-center w-[110px]">
-                <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                <span>1</span>
-                <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
-              </div>
-              <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative">
-            <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
-              <div className="flex w-[80%] mt-4 justify-end">
-                <div className="w-[21.6px] h-[22px]">
-                  <svg
-                    className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
-                    xmlns="http://www.w3.org/2000svg"
-                    viewBox="-5 0 156.69 110.07">
-                    <defs></defs>
-                    <path
-                      data-name="neptun_heart"
-                      className="cls-1"
-                      d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
-                      transform="translate(-1191.655 -217.465)"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
-              </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
-              <div className="flex items-center gap-2">
-                <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
-                </div>
-                <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
-                </div>
-              </div>
-              <div className="flex justify-between items-center w-[110px]">
-                <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                <span>1</span>
-                <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
-              </div>
-              <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative">
-            <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
-              <div className="flex w-[80%] mt-4 justify-end">
-                <div className="w-[21.6px] h-[22px]">
-                  <svg
-                    className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
-                    xmlns="http://www.w3.org/2000svg"
-                    viewBox="-5 0 156.69 110.07">
-                    <defs></defs>
-                    <path
-                      data-name="neptun_heart"
-                      className="cls-1"
-                      d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
-                      transform="translate(-1191.655 -217.465)"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
-              </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
-              <div className="flex items-center gap-2">
-                <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
-                </div>
-                <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
-                </div>
-              </div>
-              <div className="flex justify-between items-center w-[110px]">
-                <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                <span>1</span>
-                <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
-              </div>
-              <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative">
-            <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
-              <div className="flex w-[80%] mt-4 justify-end">
-                <div className="w-[21.6px] h-[22px]">
-                  <svg
-                    className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
-                    xmlns="http://www.w3.org/2000svg"
-                    viewBox="-5 0 156.69 110.07">
-                    <defs></defs>
-                    <path
-                      data-name="neptun_heart"
-                      className="cls-1"
-                      d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
-                      transform="translate(-1191.655 -217.465)"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
-              </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
-              <div className="flex items-center gap-2">
-                <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
-                </div>
-                <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
-                </div>
-              </div>
-              <div className="flex justify-between items-center w-[110px]">
-                <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                <span>1</span>
-                <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
-              </div>
-              <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative">
-            <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
-              <div className="flex w-[80%] mt-4 justify-end">
-                <div className="w-[21.6px] h-[22px]">
-                  <svg
-                    className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
-                    xmlns="http://www.w3.org/2000svg"
-                    viewBox="-5 0 156.69 110.07">
-                    <defs></defs>
-                    <path
-                      data-name="neptun_heart"
-                      className="cls-1"
-                      d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
-                      transform="translate(-1191.655 -217.465)"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
-              </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
-              <div className="flex items-center gap-2">
-                <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
-                </div>
-                <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
-                </div>
-              </div>
-              <div className="flex justify-between items-center w-[110px]">
-                <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                <span>1</span>
-                <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
-              </div>
-              <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative">
-            <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
-              <div className="flex w-[80%] mt-4 justify-end">
-                <div className="w-[21.6px] h-[22px]">
-                  <svg
-                    className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
-                    xmlns="http://www.w3.org/2000svg"
-                    viewBox="-5 0 156.69 110.07">
-                    <defs></defs>
-                    <path
-                      data-name="neptun_heart"
-                      className="cls-1"
-                      d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
-                      transform="translate(-1191.655 -217.465)"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
-              </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
-              <div className="flex items-center gap-2">
-                <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
-                </div>
-                <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
-                </div>
-              </div>
-              <div className="flex justify-between items-center w-[110px]">
-                <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                <span>1</span>
-                <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
-              </div>
-              <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="relative">
-            <div className="bg-white border-[1px] rounded-md flex flex-col items-center justify-center  w-full md:w-[200px] lg:w-[250px]">
-              <div className="flex w-[80%] mt-4 justify-end">
-                <div className="w-[21.6px] h-[22px]">
-                  <svg
-                    className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
-                    xmlns="http://www.w3.org/2000svg"
-                    viewBox="-5 0 156.69 110.07">
-                    <defs></defs>
-                    <path
-                      data-name="neptun_heart"
-                      className="cls-1"
-                      d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
-                      transform="translate(-1191.655 -217.465)"></path>
-                  </svg>
-                </div>
-              </div>
-              <div className="w-[100px] h-[140px] ">
-                <img className="object-cover" src="../src/assets/qaymaq.webp" alt="" />
-              </div>
-              <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">AZER SUD 200GR QAYMAQ 26% T/P</h3>
-              <div className="flex items-center gap-2">
-                <div className="w-[40px] h-[40px] flex justify-center items-center transition duration-200 text-[0.8rem] font-bold rounded-full bg-[#ff84003f] hover:bg-[#ff8230]">
-                  <h3>-17%</h3>
-                </div>
-                <div>
-                  <h3 className="text-[1rem] line-through text-gray-500">2.39 ₼</h3>
-                  <h2 className="text-[1.3rem] font-bold">0.55 ₼</h2>
-                </div>
-              </div>
-              <div className="flex justify-between items-center w-[110px]">
-                <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                <span>1</span>
-                <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
-              </div>
-              <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-10"><FaCartShopping className="flex w-full justify-center" /></button>
-            </div>
-          </SwiperSlide>
+            )
+          })
+         }
+        </div>
+          
           <div className="swiper-button-prev swiper-button-2" />
           <div className="swiper-button-next swiper-button-2" />
         </Swiper>
