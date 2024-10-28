@@ -4,12 +4,11 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 import { useState, useEffect } from 'react';
 
 function Sidebar() {
-    const [CATEG, setCATEG] = useState([]);
-
+    const [categ, setCateg] = useState([]);
     useEffect(() => {
         fetch('https://neptunbk.vercel.app/categories')
             .then(res => res.json())
-            .then(data => setCATEG(data))
+            .then(data => setCateg(data))
     }, [])
 
     const arrIcon = ["https://neptun.az/image/catalog/icon-menu/Meyvə-və-tərəvəz.svg", "https://neptun.az/image/catalog/icon-menu/ət-və-toyuq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Qastronom.svg", "https://neptun.az/image/catalog/icon-menu/ərzaq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Şirniyyat-çay-və qəhvə.svg", "https://neptun.az/image/catalog/icon-menu/İçkilər.svg", "https://neptun.az/image/catalog/icon-menu/Süd-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Uşaq-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Kosmetik-və-gigiyenik.svg", "https://neptun.az/image/catalog/icon-menu/Yuyucu-vasitələr.svg", "https://neptun.az/image/catalog/icon-menu/Məişət-mətbəx-və-tekstil.svg", "https://neptun.az/image/catalog/icon-menu/Konselyariya.svg", "https://neptun.az/image/catalog/icon-menu/Heyvan-yemləri.svg", "https://neptun.az/image/catalog/icon-menu/neptun-icon.svg", "https://neptun.az/image/catalog/icon-menu/elektronika-və-mebel.svg", "https://neptun.az/image/catalog/icon-menu/Aksiyalar.svg"]
@@ -23,10 +22,10 @@ function Sidebar() {
                 <h3>Kategoriyalar</h3>
             </div>
             <ul className="p-5 lg:p-0">
-                {CATEG.map((item, index) => {
+                { categ && categ.map((item, index) => {
                     return (
                         <li key={item.id} className="group border-b-2 lg:relative">
-                            <a href="#"  className={` ${index < CATEG.length - 1 ? 'hover:bg-[#ff84003f]' : '' } py-1 lg:px-3 lg:py-2 flex items-center ${index === CATEG.length - 1 ? 'bg-[#ff8300]' : ''}`}>
+                            <a href="#"  className={` ${index < categ.length - 1 ? 'hover:bg-[#ff84003f]' : '' } py-1 lg:px-3 lg:py-2 flex items-center ${index === categ.length - 1 ? 'bg-[#ff8300]' : ''}`}>
                                 <div className="w-[20px]">
                                     <img src={arrIcon[index]} alt="" className="fill-[#ff8300] object-fill w-[22px] h-[24px]"/>
                                 </div>

@@ -8,12 +8,12 @@ import 'swiper/css/effect-fade';
 import { useEffect, useState } from "react";
 
 function BestSellers() {
-  const [PRODUCT, setPRODUCT] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     fetch('https://neptunbk.vercel.app/products?limit=100')
       .then(res => res.json())
-      .then(data => setPRODUCT(data.products))
+      .then(data => setProduct(data.products))
   }, []);
 
   return (
@@ -46,7 +46,7 @@ function BestSellers() {
           }}
         >
           <div className="flex">
-            {PRODUCT && PRODUCT.map((item) => (
+            {product && product.map((item) => (
               <SwiperSlide key={item.id} className="relative">
                        <div className="bg-white border-[1px] h-[350px] rounded-md flex flex-col items-center justify-center  w-full lgx:w-[190px]">
                   <div className="flex w-[80%] mt-4 justify-end">
