@@ -84,8 +84,8 @@ function Main() {
         <SelectedProducts />
         <SpecialOffers />
         <BestSellers />
-        <div className="md:max-w-[1300px] mx-auto max-w-[600px] py-20">
-           <div className="grid justify-center items-center gap-6 sm:grid-cols-2 sm:px-20 lg:grid-cols-4 ">
+        <div className="md:max-w-[1300px] mx-auto max-w-[600px] px-5 py-20">
+           <div className="grid justify-center items-center gap-6 sm:grid-cols-2 md:px-20 lg:grid-cols-4 ">
            <img className="w-full object-cover" src="./src/assets/freshmaker.png" alt="" />
            <img className="w-full object-cover" src="./src/assets/payman.png" alt="" />
            <img className="w-full object-cover" src="./src/assets/joyful.png" alt="" />
