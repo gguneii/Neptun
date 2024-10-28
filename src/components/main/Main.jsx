@@ -40,16 +40,16 @@ function Main() {
           onSwiper={(swiper) => swiper}
         >
           <SwiperSlide>
-            <img className="w-full object-cover" src="./src/assets/swiper1.webp" alt="" />
+            <img className="w-full object-cover" src="./public/assets/swiper1.webp" alt="" />
             </SwiperSlide>
           <SwiperSlide> 
-            <img className="w-full object-cover" src="./src/assets/swiper2.webp" alt="" />
+            <img className="w-full object-cover" src="./public/assets/swiper2.webp" alt="" />
           </SwiperSlide>
           <SwiperSlide>
-             <img className="w-full object-cover" src="./src/assets/swiper3.webp" alt="" />
+             <img className="w-full object-cover" src="./public/assets/swiper3.webp" alt="" />
           </SwiperSlide>
           <SwiperSlide>
-          <img className="w-full object-cover" src="./src/assets/swiper4.webp" alt="" />
+          <img className="w-full object-cover" src="./public/assets/swiper4.webp" alt="" />
           </SwiperSlide>
 
           <div className="swiper-button-prev swiper-button-1" />
@@ -59,21 +59,21 @@ function Main() {
 
         <div className="max-w-[800px] mx-auto medias flex justify-around mdl:mr-[10px] lgx:max-w-[940px] lgx:justify-between mt-3 lgx:mr-[30px] 2xl:mr-[160px] pb-[40px]">
             <div className="media w-full">
-              <img className="w-full object-cover" src="./src/assets/media1.png" alt="" />
+              <img className="w-full object-cover" src="./public/assets/media1.png" alt="" />
               <div className="flex justify-between items-center bg-white">
                 <h4 className="py-1 font-semibold text-[12px]">50 AZN 50 Bonus</h4>
                 <FontAwesomeIcon icon={faArrowRight} />
               </div>
             </div>
             <div className="media w-full mx-4">
-              <img className="w-full object-cover" src="./src/assets/media2.jpg" alt="" />
+              <img className="w-full object-cover" src="./public/assets/media2.jpg" alt="" />
               <div className="flex justify-between items-center bg-white">
                 <h4 className="font-semibold text-[12px] py-1">Neptunda dadli endirimler</h4>
                 <FontAwesomeIcon icon={faArrowRight} />
               </div>
             </div>
             <div className="media w-full hidden mdl:block">
-              <img className="w-full object-cover" src="./src/assets/media3.jpg" alt="" />
+              <img className="w-full object-cover" src="./public/assets/media3.jpg" alt="" />
               <div className="flex justify-between items-center bg-white">
                 <h4 className="whitespace-nowrap font-semibold text-[12px] p-1"> Heftesonu endirimler Neptunda</h4>
                 <FontAwesomeIcon icon={faArrowRight} />
@@ -86,10 +86,10 @@ function Main() {
         <BestSellers />
         <div className="md:max-w-[1300px] mx-auto max-w-[600px] px-5 py-20">
            <div className="grid justify-center items-center gap-6 sm:grid-cols-2 md:px-20 lg:grid-cols-4 ">
-           <img className="w-full object-cover" src="./src/assets/freshmaker.png" alt="" />
-           <img className="w-full object-cover" src="./src/assets/payman.png" alt="" />
-           <img className="w-full object-cover" src="./src/assets/joyful.png" alt="" />
-           <img className="w-full object-cover" src="./src/assets/pfanner.png" alt="" />
+           <img className="w-full object-cover" src="./public/assets/freshmaker.png" alt="" />
+           <img className="w-full object-cover" src="./public/assets/payman.png" alt="" />
+           <img className="w-full object-cover" src="./public/assets/joyful.png" alt="" />
+           <img className="w-full object-cover" src="./public/assets/pfanner.png" alt="" />
            </div>
         </div>
     </main>
