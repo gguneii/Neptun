@@ -13,22 +13,26 @@ import { useState } from "react";
 function HeaderBottom() {
   const [openIndex, setopenIndex] = useState(null)
   const [sidebar, setSideBar] = useState(false)
-  function toggleLists(index){
-    setopenIndex((prevIndex)=> (prevIndex === index ? null : index)
-   )
+  function toggleLists(index) {
+    setopenIndex((prevIndex) => (prevIndex === index ? null : index)
+    )
     // console.log(openIndex);
   }
-  function handleSidebar(){
+  function handleSidebar() {
     setSideBar(!sidebar)
   }
+  const [visible, setVisible] = useState(false);
 
+  const showMore = () => {
+    setVisible(prev => !prev);
+  };
   return (
     <>
       <div className="header-bottom bg-[#ff8300]">
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
-            <Sidebar />
-            <div className="header-bottom-left lg:hidden">
+            <Sidebar onClose={showMore} visible={visible} />
+            <div className="header-bottom-left lg:hidden" onClick={showMore}>
               <FontAwesomeIcon icon={faBars} />
             </div>
             <div className="">
@@ -283,7 +287,7 @@ function HeaderBottom() {
         </div>
       </div>
 
-      <div className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${sidebar ? "translate-x-0" :"-translate-x-full"}`}>
+      <div className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${sidebar ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="p-[20px] text-black">
           <span onClick={handleSidebar} className={`block cursor-pointer pb-[10px] font-bold text-right ${sidebar ? "" : "hidden"}`}>
             X
@@ -295,9 +299,8 @@ function HeaderBottom() {
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
                 <a className="hover:text-[#ff8300] w-full" href="#">Haqqımızda</a>
-                <button onClick={() =>toggleLists(0)} className={`${
-                    openIndex === 0 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                <button onClick={() => toggleLists(0)} className={`${openIndex === 0 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
                   <span className="text-center font-bold">{openIndex === 0 ? "-" : "+"}</span>
                 </button>
               </div>
@@ -313,10 +316,9 @@ function HeaderBottom() {
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
                 <a className="hover:text-[#ff8300] w-full" href="#">Aksiyalar</a>
-                <button onClick={() =>toggleLists(1)} className={`${
-                    openIndex === 1 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
-                  <span className="text-center font-bold">{ openIndex === 1 ? "-" : "+"}</span>
+                <button onClick={() => toggleLists(1)} className={`${openIndex === 1 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                  <span className="text-center font-bold">{openIndex === 1 ? "-" : "+"}</span>
                 </button>
               </div>
               <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 1 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
@@ -334,10 +336,9 @@ function HeaderBottom() {
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
                 <a className="hover:text-[#ff8300] w-full" href="#">Supermarketlər</a>
-                <button onClick={() =>toggleLists(2)} className={`${
-                    openIndex === 2 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
-                  <span className="text-center font-bold">{ openIndex === 2 ? "-" : "+"}</span>
+                <button onClick={() => toggleLists(2)} className={`${openIndex === 2 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                  <span className="text-center font-bold">{openIndex === 2 ? "-" : "+"}</span>
                 </button>
               </div>
               <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 2 ? "min-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
@@ -364,10 +365,9 @@ function HeaderBottom() {
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
                 <a className="hover:text-[#ff8300] w-full" href="#">Karyera</a>
-                <button onClick={() =>toggleLists(3)} className={`${
-                    openIndex === 3 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
-                  <span className="text-center font-bold">{ openIndex === 3 ? "-" : "+"}</span>
+                <button onClick={() => toggleLists(3)} className={`${openIndex === 3 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
+                  <span className="text-center font-bold">{openIndex === 3 ? "-" : "+"}</span>
                 </button>
               </div>
               <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 3 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
