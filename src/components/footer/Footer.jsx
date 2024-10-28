@@ -96,7 +96,7 @@ function Footer() {
               </p>
               <form className="flex w-full mdl:w-auto space-x-4">
                 <select className="h-[42px] px-[15px] text-[12px] text-[#999] bg-white border border-[#ff8230] rounded-full">
-                  <option value="" disabled selected>
+                  <option disabled>
                     ---
                   </option>
                   <option value="050">050</option>
