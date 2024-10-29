@@ -13,8 +13,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Main() {
   return (
-    <main className="bg-[#f2f2f2]">
-        <div className="" >
+    <main className="bg-[#f2f2f2] ">
+        <div className="max-w-[1550px] h-full mx-auto" >
         <Swiper className="max-w-[800px] mx-auto mdl:mr-[10px] lgx:max-w-[980px] lgx:pt-[10px] lgx:mr-[10px] 2xl:mr-[140px] pt-[10px] px-1 md:px-[20px]"
         style={{
           "--swiper-navigation-color": "#ff8300",
