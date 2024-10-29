@@ -4,7 +4,7 @@ import { RiArrowDropRightLine } from "react-icons/ri";
 import { useState, useEffect } from 'react';
 
 const Sidebar = ({ onClose, visible }) => {
-    const [categ, setCateg] = useState([]);
+    const [categ, setCateg] = useState(null);
     useEffect(() => {
         fetch('https://neptunbk.vercel.app/categories')
             .then(res => res.json())

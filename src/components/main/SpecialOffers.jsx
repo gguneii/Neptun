@@ -9,7 +9,7 @@ import 'swiper/css/effect-fade';
 import { useEffect, useState } from "react";
 
 function SpecialOffers() {
-  const [product, setProduct] = useState([])
+  const [product, setProduct] = useState(null)
   useEffect(() => {
     fetch('https://neptunbk.vercel.app/products/discounted')
       .then(res => res.json())
