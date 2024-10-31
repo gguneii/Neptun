@@ -10,16 +10,8 @@ import { useContext } from "react";
 import { DATA } from "../../context/DataContext";
 
 function SpecialOffers() {
-<<<<<<< HEAD
-const{ discounted, setDiscounted} = useContext(DATA)
-=======
-  const [product, setProduct] = useState(null)
-  useEffect(() => {
-    fetch('https://neptunbk.vercel.app/products/discounted')
-      .then(res => res.json())
-      .then(data => setProduct(data.products))
-  }, [])
->>>>>>> c3167607aacf5cc5490277517e3659d6913d2e97
+  const {discounted, setDiscounted} = useContext(DATA)
+  
   return (
     <div className="bg-gray-100 h-full">
       <div className="max-w-[1200px] w-[95%] mx-auto py-4">

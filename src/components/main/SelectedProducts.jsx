@@ -10,17 +10,8 @@ import { useContext } from "react";
 import { DATA } from "../../context/DataContext";
 
 function SelectedProducts() {
-<<<<<<< HEAD
   const {data, setData} = useContext(DATA)
 
-=======
-  const [product, setProduct] = useState(null)
-  useEffect(() => {
-    fetch('https://neptunbk.vercel.app/products?limit=100')
-      .then(res => res.json())
-      .then(data => setProduct(data.products))
-  }, [])
->>>>>>> c3167607aacf5cc5490277517e3659d6913d2e97
   return (
     <div className="bg-gray-100 h-full md:pt-[40px]">
       <div className="max-w-[1200px] w-[95%] mx-auto py-4 ">

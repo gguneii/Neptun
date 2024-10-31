@@ -6,13 +6,11 @@ function DataContext({children}) {
   const [category, setCategory] = useState(null)
   const [data, setData] = useState(null)
   const [discounted, setDiscounted] = useState(null)
-  // const [popular, setPopular] = useState(null)
 
   useEffect(()=>{
    getAllCategories().then(res =>setCategory(res) )
     getAllProducts().then(res => setData(res) )
     getDiscounted().then(res => setDiscounted(res) )
-    // getPopular().then(res => setPopular(res))
   },[])
 
   return (

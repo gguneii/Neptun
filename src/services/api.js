@@ -14,14 +14,5 @@ async function getDiscounted(){
     const res = await axios.get('https://neptunbk.vercel.app/products/discounted')
     return res.data
 }
-//  async function getPopular(){
-//     const res = await axios.get('https://neptunbk.vercel.app/products')
-//      return res.data
-// }
 
-  export{
-    getAllCategories,
-    getAllProducts,
-    getDiscounted
-    // getPopular
-  }
+export{getAllCategories, getAllProducts, getDiscounted}
