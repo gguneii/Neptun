@@ -1,23 +1,25 @@
-import axios from "axios"
-import { createContext, useEffect, useState } from "react"
-import { getFullCateg, getFullDisc, getFullItem } from "../services/api"
+import React, { createContext, useEffect, useState } from 'react'
+import { getAllCategories, getAllProducts, getDiscounted } from '../services/Api'
 
-export const DATA = createContext([])
+export const DATA = createContext(null)
+function DataContext({children}) {
+  const [category, setCategory] = useState(null)
+  const [data, setData] = useState(null)
+  const [discounted, setDiscounted] = useState(null)
+  // const [popular, setPopular] = useState(null)
 
-function DataContext({ children }) {
-    const [categ, setCateg] = useState([])
-    const [product, setProduct] = useState(null)
-    const [discProduct, setDiscProduct] = useState(null)
-    useEffect(() => {
-        getFullCateg().then(res => setCateg(res))
-        getFullItem().then(res => setProduct(res))
-        getFullDisc().then(res => setDiscProduct(res))
-    }, [])
+  useEffect(()=>{
+   getAllCategories().then(res =>setCategory(res) )
+    getAllProducts().then(res => setData(res) )
+    getDiscounted().then(res => setDiscounted(res) )
+    // getPopular().then(res => setPopular(res))
+  },[])
 
-    return (
-        <DATA.Provider value={{ categ, product, discProduct }}>
-            {children}
-        </DATA.Provider>
-    )
+  return (
+    <DATA.Provider value={{category, setCategory, data, setData, discounted, setDiscounted}}>
+      {children}
+    </DATA.Provider>
+  )
 }
+
 export default DataContext

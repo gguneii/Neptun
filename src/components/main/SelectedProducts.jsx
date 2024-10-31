@@ -9,10 +9,18 @@ import 'swiper/css/effect-fade';
 import { useContext } from "react";
 import { DATA } from "../../context/DataContext";
 
-
 function SelectedProducts() {
-  const {product} = useContext(DATA)
+<<<<<<< HEAD
+  const {data, setData} = useContext(DATA)
 
+=======
+  const [product, setProduct] = useState(null)
+  useEffect(() => {
+    fetch('https://neptunbk.vercel.app/products?limit=100')
+      .then(res => res.json())
+      .then(data => setProduct(data.products))
+  }, [])
+>>>>>>> c3167607aacf5cc5490277517e3659d6913d2e97
   return (
     <div className="bg-gray-100 h-full md:pt-[40px]">
       <div className="max-w-[1200px] w-[95%] mx-auto py-4 ">
@@ -127,7 +135,7 @@ function SelectedProducts() {
           >
             <div className="flex justify-center">
               {
-                product && product.products.map((item) =>
+                data && data.products.map((item) =>
                   <SwiperSlide key={item.id} className="relative">
                     <div className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center  w-full  lgx:w-[190px]">
                       <div className="flex w-[80%] mt-4 justify-end">
