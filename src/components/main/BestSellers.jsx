@@ -9,7 +9,8 @@ import { useContext } from "react";
 import { DATA } from "../../context/DataContext";
 
 function BestSellers() {
-  const {data, setData} = useContext(DATA)
+  const {data} = useContext(DATA)
+  // const {data, setData} = useContext(DATA)
 
   return (
     <div className="bg-gray-100 h-full">
