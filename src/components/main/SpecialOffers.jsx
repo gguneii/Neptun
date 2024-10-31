@@ -6,15 +6,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { DATA } from "../../context/DataContext";
 
 function SpecialOffers() {
-  const [product, setProduct] = useState([])
-  useEffect(() => {
-    fetch('https://neptunbk.vercel.app/products/discounted')
-      .then(res => res.json())
-      .then(data => setProduct(data.products))
-  }, [])
+const{ discounted, setDiscounted} = useContext(DATA)
   return (
     <div className="bg-gray-100 h-full">
       <div className="max-w-[1200px] w-[95%] mx-auto py-4">
@@ -49,7 +45,7 @@ function SpecialOffers() {
             prevEl: '.swiper-button-prev.swiper-button-2',
           }}
         >
-          {product && product.map((item) => (
+          {discounted && discounted.products.map((item) => (
             <SwiperSlide key={item.id} className="relative">
               <div className="bg-white border-[1px] h-[350px] rounded-md flex flex-col items-center justify-center  w-full lgx:w-[190px]">
                 <div className="flex w-[80%] mt-4 justify-end">
