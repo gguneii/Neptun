@@ -5,8 +5,18 @@ import { useState, useEffect, useContext } from 'react';
 import {DATA} from "../../context/DataContext"
 
 const Sidebar = ({ onClose, visible }) => {
+<<<<<<< HEAD
     const {category} = useContext(DATA)
     
+=======
+    const [categ, setCateg] = useState(null);
+    useEffect(() => {
+        fetch('https://neptunbk.vercel.app/categories')
+            .then(res => res.json())
+            .then(data => setCateg(data))
+    }, [])
+
+>>>>>>> c3167607aacf5cc5490277517e3659d6913d2e97
     const arrIcon = ["https://neptun.az/image/catalog/icon-menu/Meyvə-və-tərəvəz.svg", "https://neptun.az/image/catalog/icon-menu/ət-və-toyuq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Qastronom.svg", "https://neptun.az/image/catalog/icon-menu/ərzaq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Şirniyyat-çay-və qəhvə.svg", "https://neptun.az/image/catalog/icon-menu/İçkilər.svg", "https://neptun.az/image/catalog/icon-menu/Süd-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Uşaq-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Kosmetik-və-gigiyenik.svg", "https://neptun.az/image/catalog/icon-menu/Yuyucu-vasitələr.svg", "https://neptun.az/image/catalog/icon-menu/Məişət-mətbəx-və-tekstil.svg", "https://neptun.az/image/catalog/icon-menu/Konselyariya.svg", "https://neptun.az/image/catalog/icon-menu/Heyvan-yemləri.svg", "https://neptun.az/image/catalog/icon-menu/neptun-icon.svg", "https://neptun.az/image/catalog/icon-menu/elektronika-və-mebel.svg", "https://neptun.az/image/catalog/icon-menu/Aksiyalar.svg"]
     return (
         <div className={`absolute top-[118px] custom:top-[148px] lg:top-[-6px] text-black left-0 z-[999] bg-white min-h-full transition-all lg:border-t-[6px] lg:rounded-md lg:border-[#ff8300] duration-500 ease-in-out 
