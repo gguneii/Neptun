@@ -1,25 +1,42 @@
 import { IoCloseSharp } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiArrowDropRightLine } from "react-icons/ri";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {DATA} from "../../context/DataContext"
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ onClose, visible }) => {
     // const {category, setCategory} = useContext(DATA)
     const {category} = useContext(DATA)
+    const [open, setOpen] = useState(true)
+
+    onscroll = function () {
+        if (window.scrollY >= 750) {
+            setOpen(false)
+        } else {
+            setOpen(true)
+        }
+    }
+
     
     const arrIcon = ["https://neptun.az/image/catalog/icon-menu/Meyvə-və-tərəvəz.svg", "https://neptun.az/image/catalog/icon-menu/ət-və-toyuq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Qastronom.svg", "https://neptun.az/image/catalog/icon-menu/ərzaq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Şirniyyat-çay-və qəhvə.svg", "https://neptun.az/image/catalog/icon-menu/İçkilər.svg", "https://neptun.az/image/catalog/icon-menu/Süd-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Uşaq-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Kosmetik-və-gigiyenik.svg", "https://neptun.az/image/catalog/icon-menu/Yuyucu-vasitələr.svg", "https://neptun.az/image/catalog/icon-menu/Məişət-mətbəx-və-tekstil.svg", "https://neptun.az/image/catalog/icon-menu/Konselyariya.svg", "https://neptun.az/image/catalog/icon-menu/Heyvan-yemləri.svg", "https://neptun.az/image/catalog/icon-menu/neptun-icon.svg", "https://neptun.az/image/catalog/icon-menu/elektronika-və-mebel.svg", "https://neptun.az/image/catalog/icon-menu/Aksiyalar.svg"]
     return (
-        <div className={`absolute top-[118px] custom:top-[148px] lg:top-[-6px] text-black left-0 z-[999] bg-white min-h-full transition-all lg:border-t-[6px] lg:rounded-md lg:border-[#ff8300] duration-500 ease-in-out 
+        <div
+        className={`absolute top-[118px] custom:top-[148px] lg:top-[-6px] text-black left-0 z-[999] bg-white min-h-full transition-all lg:border-t-[6px] lg:rounded-md lg:border-[#ff8300] duration-500 ease-in-out 
             ${visible ? "translate-x-0" : "-translate-x-full lg:translate-x-0 "}`}>
             <div className="hidden sm:flex justify-end pt-2 pr-4 w-full lg:hidden">
                 <IoCloseSharp onClick={onClose}/>
             </div>
-            <div className="hidden w-[90%] h-[46px] text-[0.9rem] mx-auto lg:flex lg:items-center px-3 lg:px-0 text-[#ff8300] font-bold">
+            <div 
+            className="hidden w-[90%] h-[46px] text-[0.9rem] mx-auto lg:flex lg:items-center px-3 lg:px-0 text-[#ff8300] font-bold">
                 <GiHamburgerMenu className="text-xl mr-3" />
                 <h3>Kategoriyalar</h3>
             </div>
-            <ul className="p-5 lg:p-0">
+            <ul
+             style={{
+                display: open ? "none" : "flex"
+            }}
+            className="p-5 lg:p-0">
                 {category && category.map((item, index) => {
                     return (
                         <li key={item.id} className="group border-b-2 lg:relative">
@@ -35,7 +52,7 @@ const Sidebar = ({ onClose, visible }) => {
                                     {
                                         item.subcategory.map(item => {
                                             return (
-                                                <li to={item.slug} key={item.id} className="py-3 pl-2 hover:text-[#ff8300] hover:underline"><a href="#">{item.categoryName}</a></li>
+                                                <li to={item.slug} key={item.id} className="py-3 pl-2 hover:text-[#ff8300] hover:underline"><Link to={"/category"} >{item.categoryName}</Link></li>
                                             )
                                         })
                                     }
