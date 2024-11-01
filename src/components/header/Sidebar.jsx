@@ -6,9 +6,8 @@ import {DATA} from "../../context/DataContext"
 import { Link } from "react-router-dom";
 
 const Sidebar = ({ onClose, visible }) => {
-    // const {category, setCategory} = useContext(DATA)
     const {category} = useContext(DATA)
-    // const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(true)
 
     // onscroll = function () {
     //     if (window.scrollY >= 750) {
@@ -50,9 +49,9 @@ const Sidebar = ({ onClose, visible }) => {
                             <div>
                                 <ul className="overflow-hidden opacity-0 h-0 group-hover:opacity-100 group-hover:h-full lg:group-hover:transition-all lg:group-hover:duration-400 lg:ease-in-out lg:group-hover:h-auto lg:group-hover:my-0 group-hover:my-4 border-x-2 uppercase lg:capitalize text-[.8rem] border-l-[#fdae4b] px-2 lg:absolute lg:top-0 lg:left-[230px] lg:my-0 lg:bg-white lg:min-w-[200px] lg:text-[.7rem] lg:shadow-md">
                                     {
-                                        item.subcategory.map(item => {
+                                        item.subcategory.map(sub => {
                                             return (
-                                                <li to={item.slug} key={item.id} className="py-3 pl-2 hover:text-[#ff8300] hover:underline"><Link to={"/category"} >{item.categoryName}</Link></li>
+                                                <li to={sub.slug} key={sub.id} className="py-3 pl-2 hover:text-[#ff8300] hover:underline"><Link to={`/category/${item.id}/${sub.id}`} >{sub.categoryName}</Link></li>
                                             )
                                         })
                                     }

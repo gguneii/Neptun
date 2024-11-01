@@ -13,17 +13,6 @@ import { useState } from "react";
 function HeaderBottom() {
   const [openIndex, setopenIndex] = useState(null)
   const [sidebar, setSideBar] = useState(false)
-
-  const [open, setOpen] = useState(true)
-
-    onscroll = function () {
-        if (window.scrollY >= 750) {
-            setOpen(false)
-        } else {
-            setOpen(true)
-        }
-    }
-
   function toggleLists(index) {
     setopenIndex((prevIndex) => (prevIndex === index ? null : index)
     )
@@ -39,11 +28,7 @@ function HeaderBottom() {
   };
   return (
     <>
-      <div
-      style={{
-        position: open ? "" : "fixed"
-    }}
-      className="header-bottom bg-[#ff8300]">
+      <div className="header-bottom bg-[#ff8300]">
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
             <Sidebar onClose={showMore} visible={visible} />

@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
-          <Route path="/category" element={<SelectedById />} />
+          <Route path="/category/:catId/:subId" element={<SelectedById />} />
         </Route>
       </Routes>
     </>

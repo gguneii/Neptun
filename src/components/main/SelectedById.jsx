@@ -1,12 +1,22 @@
 import { faBars, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaBars } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProductsBySubId } from "../../services/Api";
+import { FaSearch } from "react-icons/fa";
 
-faChevronRight;
 function SelectedById() {
+    const [productData, setProductData] = useState(null)
+    const {catId, subId} = useParams()
+    useEffect(()=>{
+        getProductsBySubId(subId).then(res =>{
+                setProductData(res)                
+        })        
+    }, [catId, subId])
+    
   return (
     <div className="bg-[#f2f2f2]">
-      <div className="h-[50vh] max-w-[1150px] mx-auto md:px-[15px]">
+      <div className="max-w-[1150px] mx-auto md:px-[15px]">
         <ul className="pt-[36px] pb-[31px] px-2 flex flex-wrap text-[#6c6c6c] text-[13px] font-bold">
           <li className="px-1">
             <a className="whitespace-nowrap" href="#">
@@ -33,8 +43,8 @@ function SelectedById() {
           </li>
         </ul>
 
-        <div className="px-2 mdl:flex">
-          <aside className="mb-[40px] hidden mdl:block mdl:w-[25%] md:w-[33%] bg-white border rounded-[7px]">
+        <div className="px-2 mdl:flex gap-2 w-full">
+          <aside className="mb-[40px] max-h-[200px] overflow-hidden w-full hidden mdl:block mdl:w-[30%] md:w-[33%] bg-white border rounded-[7px]">
             <h3 className="leading-[100%] py-[3px] pl-[10px] pr-[3px]">
               <span className="font-bold text-[11px] text-[#222] inline-block">
                 Filtr
@@ -82,7 +92,7 @@ function SelectedById() {
             </div>
 
             <div className="products-category ">
-              <div className="product-filter md:flex md:gap-3 items-center">
+              <div className="product-filter md:flex mdl:justify-end md:gap-3 items-center">
                 <div className="mb-[15px]">
                 <FontAwesomeIcon icon={faBars} />
                 </div>
@@ -147,7 +157,46 @@ function SelectedById() {
                   Müqayisə et
                 </div>
               </div>
-              <div className="products-lists">Cards gelecek</div>
+              <div className="products-lists grid place-content-center mdl:place-content-end gap-5 custom:grid-cols-2 md:grid-cols-4 flex-wrap">
+                {                    
+                    productData && productData.products.map(item =>{
+                        return (
+                        <div className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center w-full lgx:w-[200px]">
+                      <div className="flex w-[80%] mt-4 justify-end">
+                        <div className="w-[21.6px] h-[22px]">
+                          <svg
+                            className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
+                            xmlns="http://www.w3.org/2000svg"
+                            viewBox="-5 0 156.69 110.07">
+                            <defs></defs>
+                            <path
+                              data-name="neptun_heart"
+                              className="cls-1"
+                              d="M1322.95,268.738c-7.63,17.621-62.02,55.614-62.94,56.251V325a0.011,0.011,0,0,0-.02,0v-0.015c-0.92-.637-55.31-38.63-62.94-56.251a34.807,34.807,0,0,1,18.68-45.924A35.749,35.749,0,0,1,1260,236.828a35.749,35.749,0,0,1,44.27-14.014A34.807,34.807,0,0,1,1322.95,268.738Z"
+                              transform="translate(-1191.655 -217.465)"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="w-full min-h-[150px] relative">
+                        <img className="object-cover w-full" src={item.img} alt="" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 translate-y-[-50px] hover:translate-y-[-10px] transition-all duration-500">
+                          <div className="bg-[#ff8230] w-[35px] h-[35px] rounded-full flex justify-center items-center">
+                            <FaSearch className="text-white text-[.9rem]" />
+                          </div>
+                        </div>
+                      </div>
+                      <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">{item.name}</h3>
+                      <h2 className="text-[1.3rem] font-bold">{item.price.toFixed(2)} ₼</h2>
+                      <div className="flex justify-between items-center w-[110px]">
+                        <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
+                        <span>1</span>
+                        <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
+                      </div>
+                      <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
+                    </div>
+                    )})
+                }
+              </div>
             </div>
           </div>
         </div>

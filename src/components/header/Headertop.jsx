@@ -1,9 +1,12 @@
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function Headertop() {
     return (
         <div className="flex custom:gap-6 justify-center md:justify-start items-center w-[96%] lg:w-11/12 lgx:max-w-[1200px] mx-auto">
             <div className="h-[70px] custom:h-[100px]">
+                <Link to={"/"}>
                 <img className="h-[70px] custom:h-[100px] w-[130px] custom:w-[200px] lg:w-[250px] object-cover" src="./assets/logo.png" alt="logo image" />
+                </Link>
             </div>
             <div className="lg:flex lg:items-center lg:justify-between custom:flex-1 md:flex-none lg:flex-1">
                 <form className="lg:w-1/2">

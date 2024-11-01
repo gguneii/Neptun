@@ -14,5 +14,9 @@ async function getDiscounted(){
     const res = await axios.get('https://neptunbk.vercel.app/products/discounted')
     return res.data
 }
+async function getProductsBySubId(id){
+    const res = await axios.get(`https://neptunbk.vercel.app/products/subcategory/${id}`)
+    return res.data
+}
 
-export{getAllCategories, getAllProducts, getDiscounted}
+export{getAllCategories, getAllProducts, getDiscounted, getProductsBySubId}
