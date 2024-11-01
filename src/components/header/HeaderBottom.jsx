@@ -8,11 +8,13 @@ import {
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function HeaderBottom() {
   const [openIndex, setopenIndex] = useState(null)
   const [sidebar, setSideBar] = useState(false)
+  const [isFixed, setIsFixed] = useState(false);
+
   function toggleLists(index) {
     setopenIndex((prevIndex) => (prevIndex === index ? null : index)
     )
@@ -26,16 +28,34 @@ function HeaderBottom() {
   const showMore = () => {
     setVisible(prev => !prev);
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 750) {
+        setIsFixed(true);
+      } else {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="header-bottom bg-[#ff8300]">
+      <div className={`header-bottom bg-[#ff8300] transition-all duration-300 ${isFixed ? "fixed top-0 w-full z-50" :'top-[-50px]'}`}>
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
-            <Sidebar onClose={showMore} visible={visible} />
+           <Sidebar onClose={showMore} visible={visible} />
             <div className="header-bottom-left lg:hidden" onClick={showMore}>
               <FontAwesomeIcon icon={faBars} />
             </div>
-            <div className="">
+            <div 
+
+            >
               <ul className="hidden lgx:flex lgx:justify-end w-[800px] pt-[3px] pl-[18px]">
                 <li>
                   <a

@@ -1,7 +1,7 @@
 import { IoCloseSharp } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiArrowDropRightLine } from "react-icons/ri";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {DATA} from "../../context/DataContext"
 import { Link } from "react-router-dom";
 
@@ -9,13 +9,19 @@ const Sidebar = ({ onClose, visible }) => {
     const {category} = useContext(DATA)
     const [open, setOpen] = useState(true)
 
-    // onscroll = function () {
-    //     if (window.scrollY >= 750) {
-    //         setOpen(false)
-    //     } else {
-    //         setOpen(true)
-    //     }
-    // }
+    useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY >= 750) {
+            setOpen(false);
+          } else {
+            setOpen(true);
+          }
+        };
+    
+        window.addEventListener("scroll", handleScroll);
+    
+        return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
 
     
     const arrIcon = ["https://neptun.az/image/catalog/icon-menu/Meyvə-və-tərəvəz.svg", "https://neptun.az/image/catalog/icon-menu/ət-və-toyuq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Qastronom.svg", "https://neptun.az/image/catalog/icon-menu/ərzaq məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Şirniyyat-çay-və qəhvə.svg", "https://neptun.az/image/catalog/icon-menu/İçkilər.svg", "https://neptun.az/image/catalog/icon-menu/Süd-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Uşaq-məhsulları.svg", "https://neptun.az/image/catalog/icon-menu/Kosmetik-və-gigiyenik.svg", "https://neptun.az/image/catalog/icon-menu/Yuyucu-vasitələr.svg", "https://neptun.az/image/catalog/icon-menu/Məişət-mətbəx-və-tekstil.svg", "https://neptun.az/image/catalog/icon-menu/Konselyariya.svg", "https://neptun.az/image/catalog/icon-menu/Heyvan-yemləri.svg", "https://neptun.az/image/catalog/icon-menu/neptun-icon.svg", "https://neptun.az/image/catalog/icon-menu/elektronika-və-mebel.svg", "https://neptun.az/image/catalog/icon-menu/Aksiyalar.svg"]
@@ -31,10 +37,8 @@ const Sidebar = ({ onClose, visible }) => {
                 <GiHamburgerMenu className="text-xl mr-3" />
                 <h3>Kategoriyalar</h3>
             </div>
-            <ul
-            //  style={{
-            //     display: open ? "none" : "flex"
-            // }}
+           {
+            open &&  <ul
             className="p-5 lg:p-0">
                 {category && category.map((item, index) => {
                     return (
@@ -61,6 +65,7 @@ const Sidebar = ({ onClose, visible }) => {
                     )
                 })}
             </ul>
+           }
         </div>
     )
 }
