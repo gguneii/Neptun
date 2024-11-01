@@ -51,7 +51,7 @@ function HeaderBottom() {
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
            <Sidebar onClose={showMore} visible={visible} />
             <div className="header-bottom-left lg:hidden" onClick={showMore}>
-              <FontAwesomeIcon icon={faBars} />
+              <FontAwesomeIcon className="text-xl" icon={faBars} />
             </div>
             <div 
 

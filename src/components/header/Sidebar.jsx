@@ -8,13 +8,16 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ onClose, visible }) => {
     const {category} = useContext(DATA)
     const [open, setOpen] = useState(true)
+    const [isFixed, setIsFixed] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
           if (window.scrollY >= 750) {
             setOpen(false);
+            setIsFixed(true);
           } else {
             setOpen(true);
+            setIsFixed(false);
           }
         };
     
@@ -33,8 +36,8 @@ const Sidebar = ({ onClose, visible }) => {
                 <IoCloseSharp onClick={onClose}/>
             </div>
             <div 
-            className="hidden w-[90%] h-[46px] text-[0.9rem] mx-auto lg:flex lg:items-center px-3 lg:px-0 text-[#ff8300] font-bold">
-                <GiHamburgerMenu className="text-xl mr-3" />
+            className={`hidden w-[260px]  ${isFixed? "lg:border-b-[6px] lg:rounded-md lg:border-[#ff8300]":""} h-[52px] text-[0.9rem] mx-auto lg:flex lg:items-center px-3 lg:px-0 text-[#ff8300] font-bold`}>
+                <GiHamburgerMenu className="text-xl mx-3" />
                 <h3>Kategoriyalar</h3>
             </div>
            {
