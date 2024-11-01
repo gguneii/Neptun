@@ -46,7 +46,7 @@ function HeaderBottom() {
 
   return (
     <>
-      <div className={`header-bottom bg-[#ff8300] transition-all duration-300 ${isFixed ? "fixed top-0 w-full z-50" :'top-[-50px]'}`}>
+      <div className={`header-bottom shadow-md bg-[#ff8300] transition-all duration-300 ${isFixed ? "fixed top-0 w-full z-50" :'top-[-50px]'}`}>
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
            <Sidebar onClose={showMore} visible={visible} />
