@@ -2,6 +2,7 @@ import { faBars, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProductsBySubId } from "../../services/Api";
 import { FaSearch } from "react-icons/fa";
 import Loading from "./Loading";

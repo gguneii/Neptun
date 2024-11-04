@@ -9,6 +9,7 @@ import 'swiper/css/effect-fade';
 import { useContext } from "react";
 import { DATA } from "../../context/DataContext";
 import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SpecialOffers() {
   const {discounted, setDiscounted} = useContext(DATA)
@@ -84,6 +85,7 @@ function SpecialOffers() {
                   <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
                 </div>
                 <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[65px] h-[30px] mb-6"><FaCartShopping className="flex w-full justify-center" /></button>
+              </Link>
               </Link>
             </SwiperSlide>
           ))}

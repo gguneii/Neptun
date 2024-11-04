@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { getAllCategories, getAllProducts, getDiscounted } from '../services/Api'
+import { getAllCategories, getAllProducts, getDiscounted, showDetails } from '../services/Api'
 
 export const DATA = createContext(null)
 
