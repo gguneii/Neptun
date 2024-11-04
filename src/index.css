@@ -39,7 +39,32 @@
  .swiper-button-next.swiper-button-2{
    right: 0;
  }
+ .custom-pagination .ant-pagination-item {
+  font-size: 0.8rem;
+  background-color: #fff !important;
+  border-color: #ff8230;
+  transition: all .1s;
+}
+.custom-pagination .ant-pagination-item a{
+  color: #ff8230 !important;
+}
 
+.custom-pagination .ant-pagination-item:hover {
+  background-color: #ff8230 !important;
+  border-color: #ff8230;
+}
+.custom-pagination .ant-pagination-item a:hover{
+  color: #fff !important;
+}
+
+.custom-pagination .ant-pagination-item-active {
+  background-color: #ff8230 !important;
+  border-color: #ff8230 !important;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+.custom-pagination .ant-pagination-item-active a{
+  color: #fff !important;
+}
  @media only screen and (min-width: 768px) {
    .swiper-button-prev.swiper-button-1{
         left: 20px; 

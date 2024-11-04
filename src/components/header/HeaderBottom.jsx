@@ -9,11 +9,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
 import { useEffect, useState } from "react";
+import { FaRemoveFormat } from "react-icons/fa";
+import { FiDelete } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 function HeaderBottom() {
   const [openIndex, setopenIndex] = useState(null)
   const [sidebar, setSideBar] = useState(false)
   const [isFixed, setIsFixed] = useState(false);
+  const [isToggled, setIsToggled] = useState(false);
 
   function toggleLists(index) {
     setopenIndex((prevIndex) => (prevIndex === index ? null : index)
@@ -38,29 +43,30 @@ function HeaderBottom() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+
   return (
     <>
-      <div className={`header-bottom shadow-md bg-[#ff8300] transition-all duration-300 ${isFixed ? "fixed top-0 w-full z-50" :'top-[-50px]'}`}>
+      <div className={`header-bottom shadow-md bg-[#ff8300] transition-all duration-300 ${isFixed ? "fixed top-0 w-full z-50" : 'top-[-50px]'}`}>
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
-           <Sidebar onClose={showMore} visible={visible} />
+            <Sidebar onClose={showMore} visible={visible} />
             <div className="header-bottom-left lg:hidden" onClick={showMore}>
               <FontAwesomeIcon className="text-xl" icon={faBars} />
             </div>
-            <div 
+            <div
 
             >
               <ul className="hidden lgx:flex lgx:justify-end w-[800px] pt-[3px] pl-[18px]">
                 <li>
                   <a
                     className="font-bold text-[11px] text-white py-[5px] pr-[18px] pl-[10px] leading-[28px] font-noto hover:text-[#eee]"
-                    href=""
+                    href="/"
                   >
                     Ana səhifə
                   </a>
@@ -228,7 +234,7 @@ function HeaderBottom() {
                     </ul>
                   </div>
                 </div>
-                <div className="header-top-right text-center flex items-center">
+                <div className="relative header-top-right text-center flex items-center">
                   <div className="header-custom-link flex items-center">
                     <ul className="flex mr-[5px] items-center">
                       <li className="wishlist inline-block w-[23px] mt-0 sm:ml-[15px] mr-[1px]">
@@ -274,7 +280,7 @@ function HeaderBottom() {
                     </ul>
                   </div>
 
-                  <div className="block-cart relative">
+                  <div className="block-cart relative cursor-pointer" onClick={() => { setIsToggled((prev) => !prev) }}>
                     <div className="shopping-cart w-[20.88px] h-[17.944px] text-[13px]">
                       <svg
                         className="fill-transparent stroke-white"
@@ -294,6 +300,27 @@ function HeaderBottom() {
                       </div>
                     </div>
                   </div>
+                  {isToggled && (
+                    
+                    <div className="cart-dropdown shadow-xl absolute top-[37px] right-0 border-t-2 text-gray-800 border-t-[#ff8300] bg-white min-h-[100px] z-[999] min-w-[200px] custom:w-[320px]">
+                      <div className="bg-gray-50 border flex gap-3 pr-2  items-center text-gray-600 text-[.7rem]">
+                        <div className="w-[60px] h-[60px]"><img src="../public/assets/seher.jpg" alt="img" className="object-cover" /></div>
+                        <div className="flex-1">
+                          <h3 className="uppercase  text-[.6rem] w-[70px]">Bizim tarla 1lt feyxoa</h3>
+                        </div>
+                        <div className="flex gap-3 items-center">
+                          <h3>x1</h3>
+                          <p>2.20azn</p>
+                          <RiDeleteBin5Line  className="cursor-pointer hover:text-red-500"/>
+                        </div>
+                      </div>
+                      <p className="text-[.8rem] py-3 text-right pr-6"><span className="font-bold">Ümumi məbləğ:</span> 2.20azn</p>
+                      <div className="flex justify-between p-3">
+                        <button className="w-[70px] h-[30px] text-[.7rem] bg-neutral-600 hover:bg-[#ff8300] rounded-full text-white">Səbət</button>
+                        <button className="w-[120px] h-[30px] text-[.7rem] bg-[#ff8300] hover:bg-[#e37602]  rounded-full text-white"> Sifarişi rəsmiləşdir</button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

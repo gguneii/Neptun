@@ -1,18 +1,26 @@
 import { faBars, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProductsBySubId } from "../../services/Api";
 import { FaSearch } from "react-icons/fa";
+import Loading from "./Loading";
+import { Pagination } from 'antd';
 
 function SelectedById() {
   const [productData, setProductData] = useState(null)
-  const { catId, subId } = useParams()
+  const [page, setPage] = useState(1)
+  const { catname, subId } = useParams()
+
   useEffect(() => {
-    getProductsBySubId(subId).then(res => {
+    getProductsBySubId(subId, page).then(res => {
       setProductData(res)
     })
-  }, [catId, subId])
+  }, [subId, page])
+
+  useEffect(() => {
+    setPage(1)
+  }, [catname])
 
   return (
     <div className="bg-[#f2f2f2]">
@@ -157,11 +165,11 @@ function SelectedById() {
                   Müqayisə et
                 </div>
               </div>
-              <div className="products-lists grid place-content-center mdl:place-content-end gap-5 custom:grid-cols-2 md:grid-cols-4 flex-wrap">
+              <div className="products-lists grid place-content-center mdl:place-content-end gap-11 custom:grid-cols-2 md:grid-cols-4 flex-wrap">
                 {
-                  productData && productData.products.map(item => {
+                  productData ? productData.products.map(item => {
                     return (
-                      <div className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center w-full lgx:w-[200px]">
+                      <Link to={`${item.id}`} className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center w-full lgx:w-[200px]">
                         <div className="flex w-[80%] mt-4 justify-end">
                           <div className="w-[21.6px] h-[22px]">
                             <svg
@@ -193,17 +201,23 @@ function SelectedById() {
                           <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
                         </div>
                         <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
-                      </div>
+                      </Link>
                     )
-                  })
-                }
+                  }) :
+                    new Array(8).fill("").map(item => <Loading />)}
               </div>
               <div className="flex gap-3 justify-start py-6 max-w-[800px]">
-                {
+                <Pagination
+                  current={page}
+                  total={productData ? productData.totalPages * 10 : 10}
+                  onChange={page => setPage(page)}
+                  className="custom-pagination"
+                />
+                {/* {
                   Array(productData && productData.totalPages).fill("").map((_, i) => (
-                    <button type="button" title="Page 1" className=" w-8 h-8 text-sm font-semibold border rounded shadow-md text-[#ff8230] hover:text-white bg-white hover:bg-[#ff8230] border-[#ff8230]">{i + 1}</button>
+                    <button onClick={() => setPage(i + 1)} type="button" title={`Page ${i + 1}`} className=" w-8 h-8 text-sm font-semibold border rounded shadow-md text-[#ff8230] hover:text-white bg-white hover:bg-[#ff8230] border-[#ff8230]">{i + 1}</button>
                   ))
-                }
+                } */}
               </div>
             </div>
           </div>

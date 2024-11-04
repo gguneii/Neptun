@@ -58,7 +58,7 @@ const Sidebar = ({ onClose, visible }) => {
                                     {
                                         item.subcategory.map(sub => {
                                             return (
-                                                <li to={sub.slug} key={sub.id} className="py-3 pl-2 hover:text-[#ff8300] hover:underline"><Link to={`/category/${item.id}/${sub.id}`} >{sub.categoryName}</Link></li>
+                                                <li to={sub.slug} key={sub.id} className="py-3 pl-2 hover:text-[#ff8300] hover:underline"><Link to={`${sub.slug}/${sub.id}`} >{sub.categoryName}</Link></li>
                                             )
                                         })
                                     }

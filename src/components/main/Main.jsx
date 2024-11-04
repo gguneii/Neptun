@@ -15,7 +15,7 @@ function Main() {
   return (
     <main className="bg-[#f2f2f2] ">
         <div className="max-w-[1550px] h-full mx-auto" >
-        <Swiper className="max-w-[800px] mx-auto mdl:mr-[10px] lgx:max-w-[980px] lgx:pt-[10px] lgx:mr-[10px] 2xl:mr-[140px] pt-[10px] px-1 md:px-[20px]"
+        <Swiper className="max-w-[800px] mx-auto mdl:mr-[10px] lgx:max-w-[980px] lgx:pt-[10px] lgx:mr-[30px] 2xl:mr-[140px] pt-[10px] px-1 md:px-[20px]"
         style={{
           "--swiper-navigation-color": "#ff8300",
           "--swiper-navigation-size": "12px",
@@ -57,7 +57,7 @@ function Main() {
 
         </Swiper>
 
-        <div className="max-w-[800px] mx-auto medias flex justify-around mdl:mr-[10px] lgx:max-w-[940px] lgx:justify-between mt-6 lgx:mr-[30px] 2xl:mr-[160px] pb-[40px]">
+        <div className="max-w-[800px] mx-auto medias flex justify-around mdl:mr-[10px] lgx:max-w-[940px] lgx:justify-between mt-6 lgx:mr-[50px] 2xl:mr-[160px] pb-[40px]">
             <div className="media w-full">
               <img className="w-full object-cover" src="/assets/media1.png" alt="" />
               <div className="flex justify-between items-center bg-white">
