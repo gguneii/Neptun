@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom"
 import Layout from "./layouts/Layout"
 import SelectedById from "./components/main/SelectedById"
 import Details from "./components/main/Details"
+import { useEffect } from "react"
 
 function App() {
   const {pathname} = useLocation()
