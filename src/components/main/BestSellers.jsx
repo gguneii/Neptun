@@ -5,12 +5,31 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DATA } from "../../context/DataContext";
+import { Link } from "react-router-dom";
 
 function BestSellers() {
   const {data} = useContext(DATA)
-  // const {data, setData} = useContext(DATA)
+  const [products, setProducts] = useState(null)
+  useEffect(()=>{
+      setProducts(data?.products?.map(item =>{
+        return {
+          ...item,
+          count: 1
+        }
+      }))
+  },[data])
+
+  function updateCount(id, increment){
+    setProducts((prevProducts) =>
+      prevProducts.map((item) =>
+        item.id === id
+          ? { ...item, count: Math.max(1, item.count + increment) }
+          : item
+      )
+    );
+  };
 
   return (
     <div className="bg-gray-100 h-full">
@@ -42,9 +61,9 @@ function BestSellers() {
           }}
         >
           <div className="flex">
-            {data && data.products.map((item) => (
+            {products && products.map((item) => (
               <SwiperSlide key={item.id} className="relative">
-                <div className="bg-white border-[1px] h-[350px] rounded-md flex flex-col items-center justify-center  w-full lgx:w-[190px]">
+                <Link to={`/details/${item.id}`} className="bg-white border-[1px] h-[350px] rounded-md flex flex-col items-center justify-center  w-full lgx:w-[190px]">
                   <div className="flex w-[80%] mt-4 justify-end">
                     <div className="w-[21.6px] h-[22px]">
                       <svg
@@ -72,12 +91,19 @@ function BestSellers() {
                   <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">{item.name}</h3>
                   <h2 className="text-[1.3rem] font-bold">{item.price}</h2>
                   <div className="flex justify-between items-center w-[110px]">
-                    <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
-                    <span>1</span>
-                    <button className="text-[#ff8230] text-[2.2rem] font-bold">+</button>
+                    <button onClick={(e)=>{
+                      e.preventDefault()
+                      updateCount(item.id, -1)
+                    }} className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
+                    <span>{item.count}</span>
+                    <button onClick={(e)=>{
+                      e.preventDefault()
+                    updateCount(item.id, 1)
+                      
+                    }} className="text-[#ff8230] text-[2.2rem] font-bold">+</button>
                   </div>
-                  <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete al</button>
-                </div>
+                  <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
+                </Link>
               </SwiperSlide>
             ))}
           </div>

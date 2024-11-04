@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import { useContext } from "react";
 import { DATA } from "../../context/DataContext";
+import { Link } from "react-router-dom";
 
 function SelectedProducts() {
   const {data, setData} = useContext(DATA)
@@ -128,7 +129,7 @@ function SelectedProducts() {
               {
                 data && data.products.map((item) =>
                   <SwiperSlide key={item.id} className="relative">
-                    <div className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center  w-full  lgx:w-[190px]">
+                    <Link to={`/details/${item.id}`} className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center  w-full  lgx:w-[190px]">
                       <div className="flex w-[80%] mt-4 justify-end">
                         <div className="w-[21.6px] h-[22px]">
                           <svg
@@ -160,7 +161,7 @@ function SelectedProducts() {
                         <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
                       </div>
                       <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete al</button>
-                    </div>
+                    </Link>
                   </SwiperSlide>
                 )
               }
