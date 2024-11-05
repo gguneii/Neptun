@@ -129,7 +129,7 @@ function SelectedProducts() {
               {
                 data && data.products.map((item) =>
                   <SwiperSlide key={item.id} className="relative">
-                    <Link to={`/details/${item.id}`} className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center  w-full  lgx:w-[190px]">
+                    <Link to={`${item.id}`} className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center  w-full  lgx:w-[190px]">
                       <div className="flex w-[80%] mt-4 justify-end">
                         <div className="w-[21.6px] h-[22px]">
                           <svg
@@ -145,14 +145,14 @@ function SelectedProducts() {
                           </svg>
                         </div>
                       </div>
-                      <Link to={`${item.id}`} className="w-[150px] min-h-[150px] relative">
+                      <div className="w-[150px] min-h-[150px] relative">
                         <img className="object-cover" src={item.img} alt="" />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 translate-y-[-50px] hover:translate-y-[-10px] transition-all duration-500">
                           <div className="bg-[#ff8230] w-[35px] h-[35px] rounded-full flex justify-center items-center">
                             <FaSearch className="text-white text-[.9rem]" />
                           </div>
                         </div>
-                      </Link>
+                      </div>
                       <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">{item.name}</h3>
                       <h2 className="text-[1.3rem] font-bold">{item.price} ₼</h2>
                       <div className="flex justify-between items-center w-[110px]">

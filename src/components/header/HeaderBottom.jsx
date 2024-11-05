@@ -304,7 +304,7 @@ function HeaderBottom() {
                     
                     <div className="cart-dropdown shadow-xl absolute top-[37px] right-0 border-t-2 text-gray-800 border-t-[#ff8300] bg-white min-h-[100px] z-[999] min-w-[200px] custom:w-[320px]">
                       <div className="bg-gray-50 border flex gap-3 pr-2  items-center text-gray-600 text-[.7rem]">
-                        <div className="w-[60px] h-[60px]"><img src="../public/assets/seher.jpg" alt="img" className="object-cover" /></div>
+                        <div className="w-[60px] h-[60px]"><img src="/assets/seher.jpg" alt="img" className="object-cover" /></div>
                         <div className="flex-1">
                           <h3 className="uppercase  text-[.6rem] w-[70px]">Bizim tarla 1lt feyxoa</h3>
                         </div>

@@ -63,7 +63,7 @@ function BestSellers() {
           <div className="flex">
             {products && products.map((item) => (
               <SwiperSlide key={item.id} className="relative">
-                <Link to={`/details/${item.id}`} className="bg-white border-[1px] h-[350px] rounded-md flex flex-col items-center justify-center  w-full lgx:w-[190px]">
+                <Link to={`${item.id}`} className="bg-white border-[1px] h-[350px] rounded-md flex flex-col items-center justify-center  w-full lgx:w-[190px]">
                   <div className="flex w-[80%] mt-4 justify-end">
                     <div className="w-[21.6px] h-[22px]">
                       <svg

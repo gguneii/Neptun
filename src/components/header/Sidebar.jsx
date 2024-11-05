@@ -36,6 +36,9 @@ const Sidebar = ({ onClose, visible }) => {
                 <IoCloseSharp onClick={onClose}/>
             </div>
             <div 
+            onClick={()=>{
+                setOpen(false)
+            }}
             className={`hidden w-[220px]  ${isFixed? "lg:border-b-[6px] lg:rounded-md lg:border-[#ff8300]":""} h-[52px] text-[0.9rem] mx-auto lg:flex lg:items-center px-3 lg:px-0 text-[#ff8300] font-bold`}>
                 <GiHamburgerMenu className="text-xl mx-3" />
                 <h3>Kategoriyalar</h3>
