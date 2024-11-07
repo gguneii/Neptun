@@ -8,22 +8,22 @@ import {
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
-import { useEffect, useState } from "react";
-import { FaRemoveFormat } from "react-icons/fa";
-import { FiDelete } from "react-icons/fi";
-import { MdDelete } from "react-icons/md";
+import { useContext, useEffect, useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { BASKET } from "../../context/BasketContext";
+import { Link } from "react-router-dom";
 
 function HeaderBottom() {
   const [openIndex, setopenIndex] = useState(null)
   const [sidebar, setSideBar] = useState(false)
   const [isFixed, setIsFixed] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
+  const { cart, setCart } = useContext(BASKET)
+  const [amount, setAmount] = useState(0)
 
   function toggleLists(index) {
     setopenIndex((prevIndex) => (prevIndex === index ? null : index)
     )
-    // console.log(openIndex);
   }
   function handleSidebar() {
     setSideBar(!sidebar)
@@ -47,8 +47,29 @@ function HeaderBottom() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [])
 
+  function calculateTotal() {
+    
+    console.log(cart);
+    const total = cart.reduce((acc, item) => {
+      const itemPrice = item.discount ? (item.price - item.totalPrice) * item.count
+        : item.price * item.count
+      return acc + itemPrice
+    }, 0);
+    console.log(total);
+    
+    setAmount(total.toFixed(2))
+  }
+  useEffect(() => {
+    calculateTotal()
+  }, [cart]);
+
+  function deleteProd(id) {
+    setCart((prev) => {
+      return prev.filter(item => item.id !== id);
+    })
+  }
 
   return (
     <>
@@ -301,22 +322,33 @@ function HeaderBottom() {
                     </div>
                   </div>
                   {isToggled && (
-                    
-                    <div className="cart-dropdown shadow-xl absolute top-[37px] right-0 border-t-2 text-gray-800 border-t-[#ff8300] bg-white min-h-[100px] z-[999] min-w-[200px] custom:w-[320px]">
-                      <div className="bg-gray-50 border flex gap-3 pr-2  items-center text-gray-600 text-[.7rem]">
-                        <div className="w-[60px] h-[60px]"><img src="/assets/seher.jpg" alt="img" className="object-cover" /></div>
-                        <div className="flex-1">
-                          <h3 className="uppercase  text-[.6rem] w-[70px]">Bizim tarla 1lt feyxoa</h3>
-                        </div>
-                        <div className="flex gap-3 items-center">
-                          <h3>x1</h3>
-                          <p>2.20azn</p>
-                          <RiDeleteBin5Line  className="cursor-pointer hover:text-red-500"/>
-                        </div>
-                      </div>
-                      <p className="text-[.8rem] py-3 text-right pr-6"><span className="font-bold">Ümumi məbləğ:</span> 2.20azn</p>
+                    // Sebet
+                    <div className="cart-dropdown shadow-xl absolute top-[37px] right-[-30px] md:right-0 border-t-2 text-gray-800 border-t-[#ff8300] bg-white min-h-[100px] z-[999] min-w-[200px] custom:w-[320px]">
+
+                      {cart && cart.map(item => {
+                        return (
+                          <div key={item.id} className="bg-gray-50 border flex gap-3 pr-2  items-center text-gray-600 text-[.7rem]">
+                            <div className="w-[60px] h-[60px]"><img src={item.img} alt={item.name} className="object-cover" /></div>
+                            <div className="flex-1">
+                              <h3 className="uppercase  text-[.6rem] w-[70px]">{item.name}</h3>
+                            </div>
+                            <div className="flex gap-3 items-center">
+                              <h3>x {item.count}</h3>
+                              <p>{item.discount ? (item.price - item.totalPrice).toFixed(2) : (item.price).toFixed(2)}azn</p>
+                              <RiDeleteBin5Line onClick={() => deleteProd(item.id)} className="cursor-pointer hover:text-red-500" />
+                            </div>
+                          </div>
+                        )
+                      })}
+
+                      <p className="text-[.8rem] py-3 text-right pr-6"><span className="font-bold">Ümumi məbləğ:</span> {amount} azn</p>
                       <div className="flex justify-between p-3">
-                        <button className="w-[70px] h-[30px] text-[.7rem] bg-neutral-600 hover:bg-[#ff8300] rounded-full text-white">Səbət</button>
+                        <Link to='cartItems'>
+                          <button className="w-[70px] h-[30px] text-[.7rem] bg-neutral-600 hover:bg-[#ff8300] rounded-full text-white">
+                            Səbət
+                          </button>
+                        </Link>
+
                         <button className="w-[120px] h-[30px] text-[.7rem] bg-[#ff8300] hover:bg-[#e37602]  rounded-full text-white"> Sifarişi rəsmiləşdir</button>
                       </div>
                     </div>
