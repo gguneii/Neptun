@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getDetailById } from "../../services/Api"
 import { Rate } from 'antd';
+import { BASKET } from "../../context/BasketContext";
 
 function Details() {
     const [prodDetails, setProdDetails] = useState(null)
     const { prodId } = useParams()
     const [count, setCount] = useState(1)
+    const { addToBasket } = useContext(BASKET)
 
     useEffect(() => {
         getDetailById(prodId).then(res =>
@@ -60,7 +62,12 @@ function Details() {
                             </div>
                             <div className="flex flex-wrap items-center gap-3">
                                 <button
-                                className="bg-[#ff8230] hover:bg-[#e8772b] transition-all duration-300 w-[110px] h-[30px] rounded-full text-white">Sebete at</button>
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        addToBasket(prodDetails.id, prodDetails.img, prodDetails.name ,prodDetails.price ,prodDetails.description ,prodDetails.discount, count, prodDetails.totalPrice)
+                                        setCount(1)
+                                    }}
+                                    className="bg-[#ff8230] hover:bg-[#e8772b] transition-all duration-300 w-[110px] h-[30px] rounded-full text-white">Sebete at</button>
                                 <div className="flex items-center w-[21.6px] h-[22px]">
                                     <svg
                                         className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"
