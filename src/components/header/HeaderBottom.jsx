@@ -8,30 +8,29 @@ import {
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./Sidebar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaRemoveFormat } from "react-icons/fa";
 import { FiDelete } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { BASKET } from "../../context/BasketContext";
 
 function HeaderBottom() {
-  const [openIndex, setopenIndex] = useState(null)
-  const [sidebar, setSideBar] = useState(false)
+  const [openIndex, setopenIndex] = useState(null);
+  const [sidebar, setSideBar] = useState(false);
   const [isFixed, setIsFixed] = useState(false);
   const [isToggled, setIsToggled] = useState(false);
-
+  const { cart, deleteProd } = useContext(BASKET);
   function toggleLists(index) {
-    setopenIndex((prevIndex) => (prevIndex === index ? null : index)
-    )
-    // console.log(openIndex);
+    setopenIndex((prevIndex) => (prevIndex === index ? null : index));
   }
   function handleSidebar() {
-    setSideBar(!sidebar)
+    setSideBar(!sidebar);
   }
   const [visible, setVisible] = useState(false);
 
   const showMore = () => {
-    setVisible(prev => !prev);
+    setVisible((prev) => !prev);
   };
   useEffect(() => {
     const handleScroll = () => {
@@ -49,19 +48,22 @@ function HeaderBottom() {
     };
   }, []);
 
-
+ 
+  
   return (
     <>
-      <div className={`header-bottom shadow-md bg-[#ff8300] transition-all duration-300 ${isFixed ? "fixed top-0 w-full z-50" : 'top-[-50px]'}`}>
+      <div
+        className={`header-bottom shadow-md bg-[#ff8300] transition-all duration-300 ${
+          isFixed ? "fixed top-0 w-full z-50" : "top-[-50px]"
+        }`}
+      >
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
             <Sidebar onClose={showMore} visible={visible} />
             <div className="header-bottom-left lg:hidden" onClick={showMore}>
               <FontAwesomeIcon className="text-xl" icon={faBars} />
             </div>
-            <div
-
-            >
+            <div>
               <ul className="hidden lgx:flex lgx:justify-end w-[800px] pt-[3px] pl-[18px]">
                 <li>
                   <a
@@ -280,7 +282,12 @@ function HeaderBottom() {
                     </ul>
                   </div>
 
-                  <div className="block-cart relative cursor-pointer" onClick={() => { setIsToggled((prev) => !prev) }}>
+                  <div
+                    className="block-cart relative cursor-pointer"
+                    onClick={() => {
+                      setIsToggled((prev) => !prev);
+                    }}
+                  >
                     <div className="shopping-cart w-[20.88px] h-[17.944px] text-[13px]">
                       <svg
                         className="fill-transparent stroke-white"
@@ -296,35 +303,71 @@ function HeaderBottom() {
                         ></path>
                       </svg>
                       <div className="absolute top-[-10px] right-[-13px] bg-[#00ff00] text-black text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                        3
+                        {cart.length}
                       </div>
                     </div>
                   </div>
                   {isToggled && (
-                    
                     <div className="cart-dropdown shadow-xl absolute top-[37px] right-0 border-t-2 text-gray-800 border-t-[#ff8300] bg-white min-h-[100px] z-[999] min-w-[200px] custom:w-[320px]">
-                      <div className="bg-gray-50 border flex gap-3 pr-2  items-center text-gray-600 text-[.7rem]">
-                        <div className="w-[60px] h-[60px]"><img src="/assets/seher.jpg" alt="img" className="object-cover" /></div>
-                        <div className="flex-1">
-                          <h3 className="uppercase  text-[.6rem] w-[70px]">Bizim tarla 1lt feyxoa</h3>
-                        </div>
-                        <div className="flex gap-3 items-center">
-                          <h3>x1</h3>
-                          <p>2.20azn</p>
-                          <RiDeleteBin5Line  className="cursor-pointer hover:text-red-500"/>
-                        </div>
-                      </div>
-                      <p className="text-[.8rem] py-3 text-right pr-6"><span className="font-bold">Ümumi məbləğ:</span> 2.20azn</p>
-                      <div className="flex justify-between p-3">
-                        <button className="w-[70px] h-[30px] text-[.7rem] bg-neutral-600 hover:bg-[#ff8300] rounded-full text-white">Səbət</button>
-                        <button className="w-[120px] h-[30px] text-[.7rem] bg-[#ff8300] hover:bg-[#e37602]  rounded-full text-white"> Sifarişi rəsmiləşdir</button>
-                      </div>
+                      <table className="min-w-full text-gray-600 text-[.7rem]">
+                        <tbody>
+                          {cart &&
+                            cart.map((item, index) => (
+                              <tr key={index} className="border-t bg-gray-50">
+                                <td className="p-2">
+                                  <div className="w-[60px] h-[60px]">
+                                    <img
+                                      src={item.img}
+                                      alt="img"
+                                      className="object-cover"
+                                    />
+                                  </div>
+                                </td>
+                                <td className="p-2 uppercase w-[70px]">
+                                  {item.name}
+                                </td>
+                                <td className="p-2 text-center">x{item.count}</td>
+                                <td className="p-2">{item.price}azn</td>
+                                <td onClick={()=>deleteProd(item.id)}
+                                 className="p-2">
+                                  <RiDeleteBin5Line className="cursor-pointer hover:text-red-500" />
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <td
+                              colSpan="5"
+                              className="text-right text-[.8rem] py-3 pr-6"
+                            >
+                              <span className="font-bold">Ümumi məbləğ:</span>{" "}
+                              2.20 azn
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colSpan="5" className="p-3">
+                              <div className="flex justify-between">
+                                <button className="w-[70px] h-[30px] text-[.7rem] bg-neutral-600 hover:bg-[#ff8300] rounded-full text-white">
+                                  Səbət
+                                </button>
+                                <button className="w-[120px] h-[30px] text-[.7rem] bg-[#ff8300] hover:bg-[#e37602] rounded-full text-white">
+                                  Sifarişi rəsmiləşdir
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        </tfoot>
+                      </table>
                     </div>
                   )}
                 </div>
               </div>
             </div>
-            <div onClick={handleSidebar} className="dropdown-menu md:right-16 cursor-pointer md:absolute md:top-[30px] mdl:opacity-0">
+            <div
+              onClick={handleSidebar}
+              className="dropdown-menu md:right-16 cursor-pointer md:absolute md:top-[30px] mdl:opacity-0"
+            >
               <FontAwesomeIcon
                 className=" bg-white  text-[#ff8300] md:bg-[#ff8300] md:text-white  text-[25px] px-3 py-1 rounded-md"
                 icon={faBars}
@@ -334,9 +377,18 @@ function HeaderBottom() {
         </div>
       </div>
 
-      <div className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${sidebar ? "translate-x-0" : "-translate-x-full"}`}>
+      <div
+        className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${
+          sidebar ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
         <div className="p-[20px] text-black">
-          <span onClick={handleSidebar} className={`block cursor-pointer pb-[10px] font-bold text-right ${sidebar ? "" : "hidden"}`}>
+          <span
+            onClick={handleSidebar}
+            className={`block cursor-pointer pb-[10px] font-bold text-right ${
+              sidebar ? "" : "hidden"
+            }`}
+          >
             X
           </span>
           <ul>
@@ -345,87 +397,218 @@ function HeaderBottom() {
             </li>
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
-                <a className="hover:text-[#ff8300] w-full" href="#">Haqqımızda</a>
-                <button onClick={() => toggleLists(0)} className={`${openIndex === 0 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
-                  <span className="text-center font-bold">{openIndex === 0 ? "-" : "+"}</span>
+                <a className="hover:text-[#ff8300] w-full" href="#">
+                  Haqqımızda
+                </a>
+                <button
+                  onClick={() => toggleLists(0)}
+                  className={`${
+                    openIndex === 0
+                      ? "bg-[#ff8300] opacity-60"
+                      : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                >
+                  <span className="text-center font-bold">
+                    {openIndex === 0 ? "-" : "+"}
+                  </span>
                 </button>
               </div>
-              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 0 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+              <ul
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                  openIndex === 0
+                    ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 <li>
-                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">Siyasətimiz</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 py-[10px]"
+                    href="#"
+                  >
+                    Siyasətimiz
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Yeniliklər</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    Yeniliklər
+                  </a>
                 </li>
               </ul>
             </li>
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
-                <a className="hover:text-[#ff8300] w-full" href="#">Aksiyalar</a>
-                <button onClick={() => toggleLists(1)} className={`${openIndex === 1 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
-                  <span className="text-center font-bold">{openIndex === 1 ? "-" : "+"}</span>
+                <a className="hover:text-[#ff8300] w-full" href="#">
+                  Aksiyalar
+                </a>
+                <button
+                  onClick={() => toggleLists(1)}
+                  className={`${
+                    openIndex === 1
+                      ? "bg-[#ff8300] opacity-60"
+                      : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                >
+                  <span className="text-center font-bold">
+                    {openIndex === 1 ? "-" : "+"}
+                  </span>
                 </button>
               </div>
-              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 1 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+              <ul
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                  openIndex === 1
+                    ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 <li>
-                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">Kampaniyalar</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 py-[10px]"
+                    href="#"
+                  >
+                    Kampaniyalar
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Neptun bonus kart</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    Neptun bonus kart
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Elektron kataloq</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    Elektron kataloq
+                  </a>
                 </li>
               </ul>
             </li>
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
-                <a className="hover:text-[#ff8300] w-full" href="#">Supermarketlər</a>
-                <button onClick={() => toggleLists(2)} className={`${openIndex === 2 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
-                  <span className="text-center font-bold">{openIndex === 2 ? "-" : "+"}</span>
+                <a className="hover:text-[#ff8300] w-full" href="#">
+                  Supermarketlər
+                </a>
+                <button
+                  onClick={() => toggleLists(2)}
+                  className={`${
+                    openIndex === 2
+                      ? "bg-[#ff8300] opacity-60"
+                      : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                >
+                  <span className="text-center font-bold">
+                    {openIndex === 2 ? "-" : "+"}
+                  </span>
                 </button>
               </div>
-              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 2 ? "min-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+              <ul
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                  openIndex === 2
+                    ? "min-h-40 opacity-100 border-t-2 border-[#ff8300]"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 <li>
-                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">Mağazalarmız</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 py-[10px]"
+                    href="#"
+                  >
+                    Mağazalarmız
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">İrad və təkliflər</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    İrad və təkliflər
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full pb-[20px]" href="#">Alıcıların nəzərinə</a>
+                  <a className="text-[10px] block w-full pb-[20px]" href="#">
+                    Alıcıların nəzərinə
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Partnyorluq</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    Partnyorluq
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Tərəfdaşlar</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    Tərəfdaşlar
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Supermarketdə reklam</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    Supermarketdə reklam
+                  </a>
                 </li>
               </ul>
             </li>
             <li className="border-b font-normal text-[13px] font-noto text-[#222]  leading-[29px] py-1">
               <div className="flex items-center justify-between">
-                <a className="hover:text-[#ff8300] w-full" href="#">Karyera</a>
-                <button onClick={() => toggleLists(3)} className={`${openIndex === 3 ? "bg-[#ff8300] opacity-60" : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}>
-                  <span className="text-center font-bold">{openIndex === 3 ? "-" : "+"}</span>
+                <a className="hover:text-[#ff8300] w-full" href="#">
+                  Karyera
+                </a>
+                <button
+                  onClick={() => toggleLists(3)}
+                  className={`${
+                    openIndex === 3
+                      ? "bg-[#ff8300] opacity-60"
+                      : "bg-[#ff8300] opacity-100"
+                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                >
+                  <span className="text-center font-bold">
+                    {openIndex === 3 ? "-" : "+"}
+                  </span>
                 </button>
               </div>
-              <ul className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 3 ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]" : "max-h-0 opacity-0"}`}>
+              <ul
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                  openIndex === 3
+                    ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
                 <li>
-                  <a className="text-[10px] block w-full leading-6 py-[10px]" href="#">İşə Qəbul Proseduru</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 py-[10px]"
+                    href="#"
+                  >
+                    İşə Qəbul Proseduru
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">Vakansiyalar</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    Vakansiyalar
+                  </a>
                 </li>
                 <li>
-                  <a className="text-[10px] block w-full leading-6 pb-[20px]" href="#">CV yerləşdirin</a>
+                  <a
+                    className="text-[10px] block w-full leading-6 pb-[20px]"
+                    href="#"
+                  >
+                    CV yerləşdirin
+                  </a>
                 </li>
               </ul>
             </li>

@@ -8,9 +8,11 @@ import 'swiper/css/effect-fade';
 import { useContext, useEffect, useState } from "react";
 import { DATA } from "../../context/DataContext";
 import { Link } from "react-router-dom";
+import { BASKET } from "../../context/BasketContext";
 
 function BestSellers() {
   const {data} = useContext(DATA)
+  const {addToBasket} = useContext(BASKET)
   const [products, setProducts] = useState(null)
   useEffect(()=>{
       setProducts(data?.products?.map(item =>{
@@ -102,7 +104,13 @@ function BestSellers() {
                       
                     }} className="text-[#ff8230] text-[2.2rem] font-bold">+</button>
                   </div>
-                  <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
+                  <button
+                  onClick={(e)=>{
+                    e.preventDefault()
+                    addToBasket(item.id, item.img, item.name, item.price, item.discount, item.count)
+                  }   
+                  }
+                  className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
                 </Link>
               </SwiperSlide>
             ))}

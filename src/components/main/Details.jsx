@@ -59,7 +59,8 @@ function Details() {
                                 <button onClick={() => setCount(count + 1)} className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
                             </div>
                             <div className="flex flex-wrap items-center gap-3">
-                                <button className="bg-[#ff8230] hover:bg-[#e8772b] transition-all duration-300 w-[110px] h-[30px] rounded-full text-white">Sebete at</button>
+                                <button
+                                className="bg-[#ff8230] hover:bg-[#e8772b] transition-all duration-300 w-[110px] h-[30px] rounded-full text-white">Sebete at</button>
                                 <div className="flex items-center w-[21.6px] h-[22px]">
                                     <svg
                                         className="fill-transparent object-cover stroke-[#ff8230] stroke-[8.07px] hover:fill-[#ff8230] duration-200"

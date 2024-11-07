@@ -1,16 +1,18 @@
 import { faBars, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProductsBySubId } from "../../services/Api";
 import { FaSearch } from "react-icons/fa";
 import Loading from "./Loading";
 import { Pagination } from 'antd';
+import { BASKET } from "../../context/BasketContext";
 
 function SelectedById() {
   const [productData, setProductData] = useState(null)
   const [page, setPage] = useState(1)
   const { catname, subId } = useParams()
+  const {addToBasket} = useContext(BASKET)
 
   useEffect(() => {
     getProductsBySubId(subId, page).then(res => {
@@ -196,11 +198,24 @@ function SelectedById() {
                         <h3 className="text-[0.65rem] font-semibold mb-4 px-4 text-center">{item.name}</h3>
                         <h2 className="text-[1.3rem] font-bold">{item.price.toFixed(2)} ₼</h2>
                         <div className="flex justify-between items-center w-[110px]">
-                          <button className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
+                          <button
+                          onClick={(e) =>{
+                            e.preventDefault()
+                          }}
+                          className="text-[#ff8230] text-[2.3rem] font-bold">-</button>
                           <span>1</span>
-                          <button className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
+                          <button
+                          onClick={(e) =>{
+                            e.preventDefault()
+                          }}
+                           className="text-[#ff8230] text-[2.2rem]  font-bold">+</button>
                         </div>
-                        <button className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
+                        <button
+                        onClick={(e) =>{
+                          e.preventDefault()
+                          addToBasket(item.id, item.img, item.name, item.price, item.discount, item.count)
+                        }}
+                        className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
                       </Link>
                     )
                   }) :
