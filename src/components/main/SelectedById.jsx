@@ -10,21 +10,25 @@ import { BASKET } from "../../context/BasketContext";
 
 function SelectedById() {
   const [productData, setProductData] = useState(null);
-  const [page, setPage] = useState(1);
-  const { catname, subId } = useParams();
-  const { addToBasket } = useContext(BASKET);
+  const [page, setPage] = useState(1)
+  const [limit, setLimit] = useState(12)
+  const { catname, subId } = useParams()
+  const { addToBasket } = useContext(BASKET)
+  const [totalPages, setTotalPages] = useState(1)
 
   useEffect(() => {
-    getProductsBySubId(subId, page).then((res) => {
+    getProductsBySubId(subId, page, limit).then((res) => {
       setProductData(
         res.products.map((item) => ({
           ...item,
           count: 1,
         }))
       );
+      setTotalPages(res.totalPages); 
     });
-  }, [subId, page]);
-
+  }, [subId, page, limit]);
+  console.log(totalPages);
+  
   useEffect(() => {
     setPage(1);
   }, [catname]);
@@ -151,15 +155,15 @@ function SelectedById() {
                   >
                     Göstər:
                   </label>
-                  <select
+                  <select value={limit} onChange={(e) => setLimit(Number(e.target.value))}
                     className="font-bold h-[38px] text-[13px] px-[10px] rounded-[24px] bg-white text-black w-full outline-none "
                     id="sort"
                   >
-                    <option value="">12</option>
-                    <option value="">25</option>
-                    <option value="">50</option>
-                    <option value="">75</option>
-                    <option value="">100</option>
+                    <option value="12">12</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="75">75</option>
+                    <option value="100">100</option>
                   </select>
                 </form>
 
@@ -183,11 +187,11 @@ function SelectedById() {
                   Müqayisə et
                 </div>
               </div>
-              <div className="products-lists grid place-content-center mdl:place-content-end gap-11 custom:grid-cols-2 md:grid-cols-4 flex-wrap">
+              <div className="products-lists grid place-content-center mdl:place-content-end gap-11 custom:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 flex-wrap">
                 {productData
                   ? productData.map((item) => {
                       return (
-                        <Link
+                        <Link key={item.id}
                           to={`${item.id}`}
                           className="bg-white border-[1px] h-full rounded-md flex flex-col items-center justify-center w-full lgx:w-[200px]"
                         >
@@ -266,12 +270,12 @@ function SelectedById() {
                         </Link>
                       );
                     })
-                  : new Array(8).fill("").map((item) => <Loading />)}
+                  : new Array(8).fill("").map((item,i) => <Loading key={i} />)}
               </div>
               <div className="flex gap-3 justify-start py-6 max-w-[800px]">
                 <Pagination
-                  current={page}
-                  total={productData ? productData.totalPages * 10 : 10}
+                  current={page || 1}
+                  total={totalPages * 10}
                   onChange={(page) => setPage(page)}
                   className="custom-pagination"
                 />

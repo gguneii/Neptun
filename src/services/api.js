@@ -1,25 +1,25 @@
-import axios from "axios"
+import axiosInstance from "./instance"
 
 async function getAllCategories() {
-  const res = await axios.get("https://neptunbk.vercel.app/categories")
+  const res = await axiosInstance.get("/categories")
   return res.data
 }
 
 async function getAllProducts() {
-  const res = await axios.get("https://neptunbk.vercel.app/products")
+  const res = await axiosInstance.get("/products")
   return res.data
 }
 
 async function getDiscounted() {
-  const res = await axios.get('https://neptunbk.vercel.app/products/discounted')
+  const res = await axiosInstance.get('/products/discounted')
   return res.data
 }
-async function getProductsBySubId(id, page = 1) {
-  const res = await axios.get(`https://neptunbk.vercel.app/products/subcategory/${id}?page=${page}`)
+async function getProductsBySubId(id, page = 1, limit) {
+  const res = await axiosInstance.get(`/products/subcategory/${id}?page=${page}&limit=${limit}`)
   return res.data
 }
 async function getDetailById(id) {
-  const res = await axios.get(`https://neptunbk.vercel.app/products/${id}`)
+  const res = await axiosInstance.get(`/products/${id}`)
   return res.data
 }
 
