@@ -127,17 +127,17 @@ function Details() {
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   onClick={(e) => {
+                    const totall = prodDetails.discount ? (prodDetails.price - prodDetails.totalPrice) : prodDetails.price ;
                     e.preventDefault();
                     addToBasket(
                       prodDetails.id,
                       prodDetails.img,
                       prodDetails.name,
-                      prodDetails.price,
+                      totall,
                       prodDetails.discount,
                       prodDetails.count,
-                      prodDetails.totalPrice
                     );
-                    setCount(1);
+                    setCount(1);                    
                   }}
                   className="bg-[#ff8230] hover:bg-[#e8772b] transition-all duration-300 w-[110px] h-[30px] rounded-full text-white"
                 >
