@@ -12,8 +12,8 @@ function Footer() {
     setVisible(prev => !prev);
   };
   return (
-    <footer>
-      <div className="bg-[#ff8300] pt-[24px] pb-[32px] px-[30px] overflow-hidden min-h-min">
+    <footer className="bg-[#ff8300] overflow-hidden min-h-min">
+      <div className="max-w-[1500px] mx-auto pt-[24px] pb-[32px] px-[30px]">
         <div className="row block-infos flex gap-[20px] lgx:gap-[30px] w-full md:w-[77%] text-[11px] text-[#fff] font-noto font-semibold mb-[40px]">
           <div className="info group flex flex-col items-center lgx:flex-row w-[33.33%]">
             <img

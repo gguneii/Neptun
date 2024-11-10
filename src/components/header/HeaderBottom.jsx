@@ -28,11 +28,14 @@ function HeaderBottom() {
   function handleSidebar() {
     setSideBar(!sidebar);
   }
+
   const [visible, setVisible] = useState(false);
 
   const showMore = () => {
-    setVisible((prev) => !prev);
+    setVisible(!visible);
+    
   };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY >= 750) {
@@ -48,7 +51,7 @@ function HeaderBottom() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [])
-  
+
   function calculateTotal() {
     const total = cart.reduce((acc, item) => {
       const itemPrice = (item.totalPrice ? item.totalPrice : item.price) * item.count;
@@ -70,9 +73,8 @@ function HeaderBottom() {
   return (
     <>
       <div
-        className={`header-bottom shadow-md bg-[#ff8300] transition-all duration-300 ${
-          isFixed ? "fixed top-0 w-full z-50" : "top-[-50px]"
-        }`}
+        className={`header-bottom shadow-md bg-[#ff8300] transition-all duration-300 ${isFixed ? "fixed top-0 w-full z-50" : "top-[-50px]"
+          }`}
       >
         <div className="container lgx:max-w-[1200px] mx-auto px-[15px]">
           <div className="header-bottom-inner flex items-center justify-between lg:relative text-white">
@@ -329,7 +331,7 @@ function HeaderBottom() {
                     <div className="cart-dropdown shadow-xl absolute top-[37px] right-[-30px] md:right-0 border-t-2 text-gray-800 border-t-[#ff8300] bg-white min-h-[100px] z-[999] min-w-[200px] custom:w-[320px]">
 
                       {cart && cart.map(item => {
-                        
+
                         return (
                           <div key={item.id} className="bg-gray-50 border flex gap-3 pr-2  items-center text-gray-600 text-[.7rem]">
                             <div className="w-[60px] h-[60px]"><img src={item.img} alt={item.name} className="object-cover" /></div>
@@ -348,7 +350,7 @@ function HeaderBottom() {
                       <p className="text-[.8rem] py-3 text-right pr-6"><span className="font-bold">Ümumi məbləğ:</span> {amount} azn</p>
                       <div className="flex justify-between p-3">
                         <Link to='cartItems'>
-                          <button className="w-[70px] h-[30px] text-[.7rem] bg-neutral-600 hover:bg-[#ff8300] rounded-full text-white">
+                          <button onClick={() => setIsToggled(false)} className="w-[70px] h-[30px] text-[.7rem] bg-neutral-600 hover:bg-[#ff8300] rounded-full text-white">
                             Səbət
                           </button>
                         </Link>
@@ -374,16 +376,14 @@ function HeaderBottom() {
       </div>
 
       <div
-        className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${
-          sidebar ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 z-[999] h-[100vh] bg-white duration-700 w-[280px] ${sidebar ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         <div className="p-[20px] text-black">
           <span
             onClick={handleSidebar}
-            className={`block cursor-pointer pb-[10px] font-bold text-right ${
-              sidebar ? "" : "hidden"
-            }`}
+            className={`block cursor-pointer pb-[10px] font-bold text-right ${sidebar ? "" : "hidden"
+              }`}
           >
             X
           </span>
@@ -398,11 +398,10 @@ function HeaderBottom() {
                 </a>
                 <button
                   onClick={() => toggleLists(0)}
-                  className={`${
-                    openIndex === 0
+                  className={`${openIndex === 0
                       ? "bg-[#ff8300] opacity-60"
                       : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                    } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
                 >
                   <span className="text-center font-bold">
                     {openIndex === 0 ? "-" : "+"}
@@ -410,11 +409,10 @@ function HeaderBottom() {
                 </button>
               </div>
               <ul
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  openIndex === 0
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 0
                     ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <li>
                   <a
@@ -441,11 +439,10 @@ function HeaderBottom() {
                 </a>
                 <button
                   onClick={() => toggleLists(1)}
-                  className={`${
-                    openIndex === 1
+                  className={`${openIndex === 1
                       ? "bg-[#ff8300] opacity-60"
                       : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                    } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
                 >
                   <span className="text-center font-bold">
                     {openIndex === 1 ? "-" : "+"}
@@ -453,11 +450,10 @@ function HeaderBottom() {
                 </button>
               </div>
               <ul
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  openIndex === 1
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 1
                     ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <li>
                   <a
@@ -492,11 +488,10 @@ function HeaderBottom() {
                 </a>
                 <button
                   onClick={() => toggleLists(2)}
-                  className={`${
-                    openIndex === 2
+                  className={`${openIndex === 2
                       ? "bg-[#ff8300] opacity-60"
                       : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                    } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
                 >
                   <span className="text-center font-bold">
                     {openIndex === 2 ? "-" : "+"}
@@ -504,11 +499,10 @@ function HeaderBottom() {
                 </button>
               </div>
               <ul
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  openIndex === 2
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 2
                     ? "min-h-40 opacity-100 border-t-2 border-[#ff8300]"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <li>
                   <a
@@ -564,11 +558,10 @@ function HeaderBottom() {
                 </a>
                 <button
                   onClick={() => toggleLists(3)}
-                  className={`${
-                    openIndex === 3
+                  className={`${openIndex === 3
                       ? "bg-[#ff8300] opacity-60"
                       : "bg-[#ff8300] opacity-100"
-                  } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
+                    } w-[22px] h-[22px] flex items-center justify-center text-white my-1 cursor-pointer transition-opacity duration-300`}
                 >
                   <span className="text-center font-bold">
                     {openIndex === 3 ? "-" : "+"}
@@ -576,11 +569,10 @@ function HeaderBottom() {
                 </button>
               </div>
               <ul
-                className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                  openIndex === 3
+                className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === 3
                     ? "max-h-40 opacity-100 border-t-2 border-[#ff8300]"
                     : "max-h-0 opacity-0"
-                }`}
+                  }`}
               >
                 <li>
                   <a

@@ -5,6 +5,9 @@ import { Helmet } from "react-helmet"
 
 function TotalProd() {
     const { cart, setCart } = useContext(BASKET)
+    function delFromBasket(id) {
+        setCart(cart.filter(item => item.id !== id));
+    }
     return (
        <>
        <Helmet>
@@ -49,7 +52,7 @@ function TotalProd() {
                                 <td className="p-3 flex gap-3 border-x border-gray-300">
                                     <input className="h-10 w-16 text-center rounded-md" type="text" defaultValue={item.count} />
                                     <button className="h-10 w-16 bg-[#ff8300] hover:bg-[#cd6b02] rounded-full text-white text-lg">Reset</button>
-                                    <button className="h-10 w-16 bg-red-500 hover:bg-red-600 rounded-full text-lg flex justify-center items-center"><RiDeleteBin5Line className=" text-white"/></button>
+                                    <button onClick={()=>delFromBasket(item.id)} className="h-10 w-16 bg-red-500 hover:bg-red-600 rounded-full text-lg flex justify-center items-center"><RiDeleteBin5Line className=" text-white"/></button>
                                 </td>
                                 <td className="p-3 text-right border-x border-gray-300">
                                     <p>{item.price.toFixed(2)} man</p>
@@ -60,13 +63,13 @@ function TotalProd() {
                         :
                         <tr className="border-b border-opacity-20 dark:border-gray-400 dark:bg-gray-100">
                         <td className="p-3 border-x border-gray-300">
-                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-[#ff8300]"></div>
                         </td>
                         <td className="p-3 border-x border-gray-300">
-                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-[#ff8300]"></div>
                         </td>
                         <td className="p-3 border-x border-gray-300">
-                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-[#ff8300]"></div>
                         </td>
                         <td className="p-3 flex gap-3 border-x border-gray-300">
                             <input className="h-10 w-16 rounded-md" type="text" />
@@ -74,7 +77,7 @@ function TotalProd() {
                             <button className="h-10 w-16 bg-red-500 hover:bg-red-600 rounded-full text-lg flex justify-center items-center"><RiDeleteBin5Line className=" text-white"/></button>
                         </td>
                         <td className="p-3 text-right border-x border-gray-300">
-                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-violet-600"></div>
+                        <div className="w-12 h-12 border-4 border-dashed rounded-full animate-spin dark:border-[#ff8300]"></div>
                         </td>
                     </tr>
                        }
