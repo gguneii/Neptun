@@ -48,21 +48,17 @@ function HeaderBottom() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [])
-
+  
   function calculateTotal() {
-    
-    console.log(cart);
     const total = cart.reduce((acc, item) => {
-      const itemPrice = item.discount ? (item.price - item.totalPrice) * item.count
-        : item.price * item.count
-      return acc + itemPrice
+      const itemPrice = (item.totalPrice ? item.totalPrice : item.price) * item.count;
+      return acc + itemPrice;
     }, 0);
-    console.log(total);
-    
-    setAmount(total.toFixed(2))
+    setAmount(total.toFixed(2));
   }
+
   useEffect(() => {
-    calculateTotal()
+    calculateTotal();
   }, [cart]);
 
   function deleteProd(id) {
@@ -333,6 +329,7 @@ function HeaderBottom() {
                     <div className="cart-dropdown shadow-xl absolute top-[37px] right-[-30px] md:right-0 border-t-2 text-gray-800 border-t-[#ff8300] bg-white min-h-[100px] z-[999] min-w-[200px] custom:w-[320px]">
 
                       {cart && cart.map(item => {
+                        
                         return (
                           <div key={item.id} className="bg-gray-50 border flex gap-3 pr-2  items-center text-gray-600 text-[.7rem]">
                             <div className="w-[60px] h-[60px]"><img src={item.img} alt={item.name} className="object-cover" /></div>
@@ -341,7 +338,7 @@ function HeaderBottom() {
                             </div>
                             <div className="flex gap-3 items-center">
                               <h3>x {item.count}</h3>
-                              <p>{item.discount ? (item.price - item.totalPrice).toFixed(2) : (item.price).toFixed(2)}azn</p>
+                              <p>{((item.price || item.totalPrice) * item.count).toFixed(2)}azn</p>
                               <RiDeleteBin5Line onClick={() => deleteProd(item.id)} className="cursor-pointer hover:text-red-500" />
                             </div>
                           </div>

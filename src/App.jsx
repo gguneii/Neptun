@@ -5,6 +5,7 @@ import SelectedById from "./components/main/SelectedById"
 import Details from "./components/main/Details"
 import { useEffect } from "react"
 import TotalProd from "./components/main/TotalProd"
+import { Helmet } from "react-helmet"
 
 function App() {
   const {pathname} = useLocation()
@@ -13,6 +14,9 @@ function App() {
   },[pathname])
   return (
     <>
+      <Helmet>
+        <title>Neptun</title>
+      </Helmet>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />

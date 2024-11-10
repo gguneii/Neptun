@@ -77,10 +77,10 @@ function updateCount(id, increment){
                 }
               }}
               spaceBetween={10}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
+              // autoplay={{
+              //   delay: 3000,
+              //   disableOnInteraction: false,
+              // }}
               speed={1000}
               navigation={{
                 nextEl: '.swiper-button-next.swiper-button-2',
@@ -196,7 +196,7 @@ function updateCount(id, increment){
                       onClick={(e)=>
                         {
                           e.preventDefault()
-                          addToBasket(item.id, item.img, item.name, item.price, item.discount, item.count)
+                          addToBasket(item.id, item.img, item.name, item.price, item.discount, item.count,item.totalPrice)
                         }
                       }
                       className="bg-[#ff8230] hover:bg-[#e4742a] transition duration-200 text-white rounded-full w-[100px] h-[35px] mb-10">Sebete at</button>
