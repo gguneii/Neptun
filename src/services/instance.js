@@ -1,5 +1,10 @@
 import axios from "axios";
-import ConfigObj from "../config/confis";
+import ConfigObj from "../config/config";
 const axiosInstance = axios.create({
-    baseURL : ConfigObj.baseUrl
+    baseURL : ConfigObj.baseUrl,
+    headers: {
+        "Content-Type": "application/json",
+    }
 })
+
+export default axiosInstance
