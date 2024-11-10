@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getDetailById } from "../../services/Api";
+import { getDetailById } from "../../services/api";
 import { Rate } from "antd";
 import { BASKET } from "../../context/BasketContext";
 
